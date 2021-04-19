@@ -1,30 +1,33 @@
-import { Box, Flex, HStack, Link, Spacer } from "@chakra-ui/layout";
+import { Image } from "@chakra-ui/image";
+import { Box, Flex, HStack, Link, Text } from "@chakra-ui/layout";
 import React from "react";
 import { FooterLinks } from "../data/Links";
-import Author from "./Author";
 import styles from "../styles/Footer.module.css";
+import Author from "./Author";
 
 const Footer = ({ author, authorImage, twitter }) => {
   return (
     <Flex
       width="100%"
+      alignItems="center"
+      justifyContent="space-between"
       p="8"
       flexWrap="wrap"
       background="blue"
       className={styles.root}
     >
       <Author name={author} image={authorImage} twitter={twitter} />
-      <Spacer />
       <Links />
-      <Box aria-label=""></Box>
+      <Attribution />
     </Flex>
   );
 };
 
 const Links = () => (
-  <HStack spacing="4" className={styles.list} aria-label="Links">
+  <HStack spacing="4" className={styles.list} aria-label="Links" isInline>
     {FooterLinks.map((item) => (
       <Link
+        key={item.label}
         color="blue.100"
         fontSize="md"
         fontWeight="medium"
@@ -35,6 +38,17 @@ const Links = () => (
       </Link>
     ))}
   </HStack>
+);
+
+const Attribution = () => (
+  <Box py="2" aria-label="" display="flex" alignItems="center">
+    <Text fontSize="md" color="blue.100">
+      Method by
+    </Text>
+    <Link isExternal href="https://thefutur.com">
+      <Image mx="2" w="16" opacity="0.8" src="/thefutur_white.svg" />
+    </Link>
+  </Box>
 );
 
 Footer.defaultProps = {
