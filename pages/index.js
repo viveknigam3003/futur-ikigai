@@ -1,4 +1,5 @@
 import { Text } from "@chakra-ui/layout";
+import Card from "../components/Card";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
@@ -12,9 +13,15 @@ export default function Home() {
       <main className={styles.main}>
         <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
 
-        <Text align="center" fontSize="xl" pt="2" color="InactiveCaptionText" >Ikigai stands for "a reason for being"</Text>
+        <Text align="center" fontSize="xl" pt="2" color="InactiveCaptionText">
+          Ikigai stands for "a reason for being"
+        </Text>
 
         <div className={styles.grid}>
+          <Card
+            title="Looking Inside"
+            body="Discovering what you love, what you're good at, and what the world needs."
+          />
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -31,16 +38,6 @@ export default function Home() {
           >
             <h3>Examples &rarr;</h3>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
           </a>
         </div>
       </main>
