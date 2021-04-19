@@ -1,3 +1,4 @@
+import Header from "../components/Header";
 import Meta from "../components/Meta";
 import styles from "../styles/Home.module.css";
 
@@ -7,9 +8,7 @@ export default function Home() {
       <Meta title="Find your Ikigai" />
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Header overline="The Futur" title="Ikigai" subtitle="生きがい"/>
 
         <p className={styles.description}>
           Get started by editing{" "}

@@ -4,9 +4,13 @@ import React from "react";
 
 const Header = ({ overline, title, subtitle }) => {
   return (
-    <Box>
-      <Text fontSize="sm">{overline}</Text>
-      <Text fontSize="5xl">{title}</Text>
+    <Box display="flex" flexDirection="column" alignItems="center">
+      <Text fontSize="sm" fontWeight="bold" align="center" color="blue">
+        {overline}
+      </Text>
+      <Text fontSize="6xl" fontWeight="semibold">
+        {title}
+      </Text>
       <Text fontSize="3xl">{subtitle}</Text>
     </Box>
   );
