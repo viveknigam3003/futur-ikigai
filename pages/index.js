@@ -12,7 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
 
-        <Text align="center" fontSize="xl" pt="2" >Ikigai stands for "a reason for being"</Text>
+        <Text align="center" fontSize="xl" pt="2" color="InactiveCaptionText" >Ikigai stands for "a reason for being"</Text>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
