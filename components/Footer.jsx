@@ -2,10 +2,17 @@ import { Box, Flex, HStack, Link, Spacer } from "@chakra-ui/layout";
 import React from "react";
 import { FooterLinks } from "../data/Links";
 import Author from "./Author";
+import styles from "../styles/Footer.module.css";
 
 const Footer = ({ author, authorImage, twitter }) => {
   return (
-    <Flex width="100%" p="8" flexWrap="wrap" background="blue">
+    <Flex
+      width="100%"
+      p="8"
+      flexWrap="wrap"
+      background="blue"
+      className={styles.root}
+    >
       <Author name={author} image={authorImage} twitter={twitter} />
       <Spacer />
       <Links />
@@ -15,7 +22,7 @@ const Footer = ({ author, authorImage, twitter }) => {
 };
 
 const Links = () => (
-  <HStack aria-label="Links">
+  <HStack spacing="4" className={styles.list} aria-label="Links">
     {FooterLinks.map((item) => (
       <Link
         color="blue.100"
