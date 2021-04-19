@@ -1,3 +1,5 @@
+import { Text } from "@chakra-ui/layout";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
 import styles from "../styles/Home.module.css";
@@ -8,12 +10,9 @@ export default function Home() {
       <Meta title="Find your Ikigai" />
 
       <main className={styles.main}>
-        <Header overline="The Futur" title="Ikigai" subtitle="生きがい"/>
+        <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <Text align="center" fontSize="xl" pt="2" >Ikigai stands for "a reason for being"</Text>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -46,16 +45,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }
