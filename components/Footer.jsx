@@ -10,11 +10,12 @@ const Footer = ({ author, authorImage, twitter }) => {
     <Flex
       width="100%"
       alignItems="center"
+      flexDirection={{ base: "column", md: "row" }}
       justifyContent="space-between"
-      p="8"
+      p={{ base: "4" }}
+      px={{ md: "12", lg: "16", xl: "32" }}
       flexWrap="wrap"
       background="blue"
-      className={styles.root}
     >
       <Author name={author} image={authorImage} twitter={twitter} />
       <Links />
