@@ -11,13 +11,11 @@ const Navbar = ({children}) => {
     <Box
       display="flex"
       flexDir="row-reverse"
-      alignItems="center"
+      alignItems={{base:"flex-start", md: "center"}}
       justifyContent="space-between"
       width="100%"
-      p={{ base: "1rem", md: "1rem 3rem", lg: "1rem 4rem" }}
+      p={{ base: "2rem 1.5rem 1rem 1.5rem", md: "1rem 3rem", lg: "1rem 4rem" }}
     >
-      {children}
-
       <HStack>
         <Tooltip label="Toggle Dark Mode" aria-label="Dark-Mode">
           <IconButton
@@ -35,6 +33,8 @@ const Navbar = ({children}) => {
           </Link>
         </Tooltip>
       </HStack>
+
+      {children}
     </Box>
   );
 };
