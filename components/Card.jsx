@@ -1,10 +1,12 @@
 import { useColorModeValue } from "@chakra-ui/color-mode";
-import { Box, Text } from "@chakra-ui/layout";
+import { Box, Link, Text } from "@chakra-ui/layout";
 import React from "react";
 
-const Card = ({ overline, title, body, color, backgroundColor, ...rest }) => {
+const Card = ({ overline, title, body, color, backgroundColor, path }) => {
   return (
     <Box
+      as="a"
+      href={path}
       m="1rem"
       p="3rem"
       display="flex"
