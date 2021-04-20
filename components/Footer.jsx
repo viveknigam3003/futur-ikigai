@@ -2,7 +2,6 @@ import { Image } from "@chakra-ui/image";
 import { Box, Flex, HStack, Link, Text } from "@chakra-ui/layout";
 import React from "react";
 import { FooterLinks } from "../data/Links";
-import styles from "../styles/Footer.module.css";
 import Author from "./Author";
 
 const Footer = ({ author, authorImage, twitter }) => {
@@ -25,7 +24,7 @@ const Footer = ({ author, authorImage, twitter }) => {
 };
 
 const Links = () => (
-  <HStack spacing="4" className={styles.list} aria-label="Links" isInline>
+  <HStack spacing="4" aria-label="Links">
     {FooterLinks.map((item) => (
       <Link
         key={item.label}
