@@ -1,3 +1,4 @@
+import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Box, Text } from "@chakra-ui/layout";
 import React from "react";
 
@@ -11,10 +12,10 @@ const Card = ({ overline, title, body, color, backgroundColor, ...rest }) => {
       flexDirection="column"
       height="inherit"
       flexBasis={{ base: "100%", md: "35%", lg: "40%" }}
-      border="1px solid gray"
+      shadow={useColorModeValue("md", "dark-lg")}
       borderRadius="10px"
-      transition="color 0.15s ease, background-color 0.15s ease"
-      _hover={{ color, backgroundColor }}
+      transition="color 0.15s ease, background-color 0.15s ease, shadow 0.15s ease"
+      _hover={{ color, backgroundColor, shadow: "lg" }}
       cursor="pointer"
     >
       <Text fontSize="sm" fontWeight="medium" textTransform="uppercase">
