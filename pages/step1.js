@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/layout";
 import React from "react";
 import ListContainer from "../components/List";
 import StepLayout from "../components/StepLayout";
+import InfoText from "../data/Info";
 
 const Step1 = () => {
   return (
@@ -13,15 +14,17 @@ const Step1 = () => {
     >
       <Box
         display="flex"
-        alignItems="center"
+        alignItems="flex-start"
         justifyContent="space-evenly"
         flexBasis="10%"
-        flexWrap={{base: "wrap", md: "nowrap"}}
+        flexWrap={{ base: "wrap", md: "nowrap" }}
       >
         <ListContainer
           title="Love"
           subtitle="List down at least 12 things you love"
           color="red"
+          infoTitle="What you love 💝"
+          infoContent={InfoText.love}
         />
         <ListContainer
           title="Good At"
