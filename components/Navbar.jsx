@@ -5,15 +5,19 @@ import { Tooltip } from "@chakra-ui/tooltip";
 import React from "react";
 import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({children}) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box
       display="flex"
       flexDir="row-reverse"
+      alignItems="center"
+      justifyContent="space-between"
       width="100%"
       p={{ base: "1rem", md: "1rem 3rem", lg: "1rem 4rem" }}
     >
+      {children}
+
       <HStack>
         <Tooltip label="Toggle Dark Mode" aria-label="Dark-Mode">
           <IconButton
