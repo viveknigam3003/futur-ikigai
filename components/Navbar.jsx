@@ -1,6 +1,6 @@
 import { IconButton } from "@chakra-ui/button";
 import { useColorMode } from "@chakra-ui/color-mode";
-import { Box, HStack } from "@chakra-ui/layout";
+import { Box, HStack, Link } from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/tooltip";
 import React from "react";
 import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
@@ -23,7 +23,12 @@ const Navbar = () => {
           />
         </Tooltip>
         <Tooltip label="GitHub Repo" aria-label="GitHub-Icon">
-          <IconButton icon={<FaGithub />} variant="ghost" />
+          <Link
+            isExternal
+            href={`https://github.com/viveknigam3003/futur-ikigai`}
+          >
+            <IconButton icon={<FaGithub />} variant="ghost" />
+          </Link>
         </Tooltip>
       </HStack>
     </Box>
