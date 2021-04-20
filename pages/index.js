@@ -32,6 +32,7 @@ export default function Home() {
             body="Discovering what you love, what you're good at, and what the world needs."
             color="blue.500"
             backgroundColor="blue.50"
+            path="/step1"
           />
           <Card
             overline="Step 2"
@@ -39,6 +40,7 @@ export default function Home() {
             body="Crafting ideas and extracting ultimate creativity for finding your Ikigai"
             color="orange.500"
             backgroundColor="orange.50"
+            path="/step2"
           />
         </Box>
       </main>
