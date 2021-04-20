@@ -1,27 +1,29 @@
-import { Text } from "@chakra-ui/layout";
-import { Box } from "@chakra-ui/layout";
+import { Box, Text } from "@chakra-ui/layout";
 import React from "react";
-import styles from "../styles/Home.module.css";
 
-const Card = ({ title, body }) => {
+const Card = ({ overline, title, body, color, backgroundColor, ...rest }) => {
   return (
     <Box
-      m="2"
-      p="8"
+      m="1rem"
+      p="3rem"
       display="flex"
       justifyContent="center"
       flexDirection="column"
-      borderColor="gray"
-      flexBasis="45%"
+      height="inherit"
+      flexBasis={{ base: "100%", md: "35%", lg: "40%" }}
       border="1px solid gray"
       borderRadius="10px"
-      height="xx-small"
-      backgroundColor="blue.50"
+      transition="color 0.15s ease, background-color 0.15s ease"
+      _hover={{ color, backgroundColor }}
+      cursor="pointer"
     >
-      <Text color="blue.800" fontSize="4xl" fontWeight="semibold">
+      <Text fontSize="sm" fontWeight="medium" textTransform="uppercase">
+        {overline}
+      </Text>
+      <Text fontSize="4xl" fontWeight="semibold" mb="4">
         {title} &rarr;
       </Text>
-      <Text color="blue.800" fontSize="md" mt="1">
+      <Text fontSize="md" mt="1">
         {body}
       </Text>
     </Box>
