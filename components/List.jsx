@@ -8,10 +8,12 @@ import { FiInfo } from "react-icons/fi";
 import Info from "./Info";
 
 const ListContainer = ({
+  id,
   color,
   title,
   subtitle,
   list,
+  listHandler,
   infoContent = [
     {
       type: "p",
@@ -53,7 +55,20 @@ const ListContainer = ({
         </Text>
       </Box>
       <VStack>
-        <Input borderColor={`${color}.400`} />
+        {list.map((item, index) => (
+          <Box
+            key={index}
+            textAlign="left"
+            p="2"
+            backgroundColor={`${color}.50`}
+            shadow="base"
+            borderRadius="8px"
+            width="100%"
+          >
+            <Text>{item}</Text>
+          </Box>
+        ))}
+        <Input borderColor={`${color}.400`} name={id} onKeyDown={listHandler} />
       </VStack>
       <Info isOpen={isOpen} onClose={onClose} title={infoTitle}>
         {infoContent.map((item, index) => (
