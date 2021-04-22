@@ -28,6 +28,27 @@ const ListContainer = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [handleAdd, handleEdits, handleDelete] = listHandler;
 
+  const MoreInfo = () => (
+    <Info isOpen={isOpen} onClose={onClose} title={infoTitle}>
+      {infoContent.map((item, index) => (
+        <Text as={item.type} fontSize="sm" key={`${infoTitle}-${index}`}>
+          {item.body}
+        </Text>
+      ))}
+      <Box pt="8">
+        <Text fontSize="sm" color={`${color}.500`} pb="2">
+          Anything coming to your mind?
+        </Text>
+        <Input
+          borderColor="gray.400"
+          name={id}
+          onKeyDown={handleAdd}
+          placeholder={placeholder}
+        />
+      </Box>
+    </Info>
+  );
+
   return (
     <Box
       p="8"
@@ -66,7 +87,7 @@ const ListContainer = ({
             item={item}
             index={index}
             backgroundColor={useColorModeValue(`${color}.50`, `${color}.500`)}
-            color={useColorModeValue(`${color}.600` ,`${color}.50`)}
+            color={useColorModeValue(`${color}.600`, `${color}.50`)}
             handleEdits={handleEdits}
             handleDelete={handleDelete}
           />
@@ -78,24 +99,7 @@ const ListContainer = ({
           placeholder={placeholder}
         />
       </VStack>
-      <Info isOpen={isOpen} onClose={onClose} title={infoTitle}>
-        {infoContent.map((item, index) => (
-          <Text as={item.type} fontSize="sm" key={`${infoTitle}-${index}`}>
-            {item.body}
-          </Text>
-        ))}
-        <Box pt="8">
-          <Text fontSize="sm" color={`${color}.500`} pb="2">
-            Anything coming to your mind?
-          </Text>
-          <Input
-            borderColor="gray.400"
-            name={id}
-            onKeyDown={handleAdd}
-            placeholder={placeholder}
-          />
-        </Box>
-      </Info>
+      <MoreInfo />
     </Box>
   );
 };
