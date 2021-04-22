@@ -2,9 +2,11 @@ import { ButtonGroup, IconButton } from "@chakra-ui/button";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import React, { useState } from "react";
-import { FiDelete, FiEdit, FiSave } from "react-icons/fi";
+import { FiEdit } from "react-icons/fi";
+import { GrFormClose } from "react-icons/gr";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-const ListItem = ({ item, index, name, handleEdits, ...rest }) => {
+const ListItem = ({ item, index, name, handleEdits, handleDelete, ...rest }) => {
   const [showOptions, setShowOptions] = useState(false);
   const [actions, setActions] = useState({ edit: false });
 
@@ -55,14 +57,15 @@ const ListItem = ({ item, index, name, handleEdits, ...rest }) => {
             color="blue.500"
             name="edit"
             aria-label="Edit Item"
-            icon={actions.edit ? <FiSave /> : <FiEdit />}
+            icon={actions.edit ? <GrFormClose /> : <FiEdit />}
             onClick={(e) => handleActions(e, "EDIT")}
           />
           <IconButton
             name="delete"
             color="red.600"
             aria-label="Delete Item"
-            icon={<FiDelete />}
+            icon={<RiDeleteBin6Line />}
+            onClick={() => handleDelete(name, index)}
           />
         </ButtonGroup>
       )}
