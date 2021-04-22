@@ -16,6 +16,10 @@ const Step1 = () => {
     }
   };
 
+  const handleEdits = (e, index) => {
+    console.log(e.target.name, e.target.value, index)
+  }
+
   return (
     <StepLayout
       pageTitle="STEP 1: Looking Inside"
@@ -38,7 +42,7 @@ const Step1 = () => {
           infoTitle="What you love 💝"
           infoContent={InfoText.love}
           list={lists.love}
-          listHandler={handleAdd}
+          listHandler={[handleAdd, handleEdits]}
           placeholder="I love ..."
         />
         <ListContainer
@@ -47,7 +51,7 @@ const Step1 = () => {
           subtitle="What do you believe you're good at?"
           color="yellow"
           list={lists.goodAt}
-          listHandler={handleAdd}
+          listHandler={[handleAdd, handleEdits]}
           placeholder="I am good at ..."
         />
         <ListContainer
@@ -56,7 +60,7 @@ const Step1 = () => {
           subtitle="What are some big problems in the world?"
           color="blue"
           list={lists.worldNeeds}
-          listHandler={handleAdd}
+          listHandler={[handleAdd, handleEdits]}
           placeholder="The world needs ..."
         />
       </Box>
