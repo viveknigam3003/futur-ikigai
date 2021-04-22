@@ -39,6 +39,7 @@ const Step1 = () => {
           infoContent={InfoText.love}
           list={lists.love}
           listHandler={handleAdd}
+          placeholder="I love ..."
         />
         <ListContainer
           title="Good At"
@@ -47,6 +48,7 @@ const Step1 = () => {
           color="yellow"
           list={lists.goodAt}
           listHandler={handleAdd}
+          placeholder="I am good at ..."
         />
         <ListContainer
           title="World Needs"
@@ -55,6 +57,7 @@ const Step1 = () => {
           color="blue"
           list={lists.worldNeeds}
           listHandler={handleAdd}
+          placeholder="The world needs ..."
         />
       </Box>
     </StepLayout>
