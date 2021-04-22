@@ -6,13 +6,23 @@ import { FiEdit } from "react-icons/fi";
 import { GrFormClose } from "react-icons/gr";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const ListItem = ({ item, index, name, handleEdits, handleDelete, ...rest }) => {
+const ListItem = ({
+  item,
+  index,
+  name,
+  handleEdits,
+  handleDelete,
+  ...rest
+}) => {
   const [showOptions, setShowOptions] = useState(false);
-  const [actions, setActions] = useState({ edit: false });
+  const [edit, setEdit] = useState(false);
 
-  const handleActions = (e, actionName) => {
-    e.preventDefault();
-    if (actionName === "EDIT") setActions({ ...actions, edit: !actions.edit });
+  const handleActions = (e, index) => {
+    handleEdits(e, index);
+    if (handleEdits(e, index)) {
+      setEdit(false);
+      setShowOptions(false);
+    }
   };
 
   const TextItem = () => (
@@ -39,13 +49,13 @@ const ListItem = ({ item, index, name, handleEdits, handleDelete, ...rest }) => 
       alignItems="flex-start"
       cursor="pointer"
     >
-      {actions.edit ? (
+      {edit ? (
         <Input
           flex="1 1 auto"
           mr="2"
           borderColor="gray.400"
           name={name}
-          onKeyDown={(e) => handleEdits(e, index)}
+          onKeyDown={(e) => handleActions(e, index)}
           defaultValue={item}
         />
       ) : (
@@ -57,8 +67,8 @@ const ListItem = ({ item, index, name, handleEdits, handleDelete, ...rest }) => 
             color="blue.500"
             name="edit"
             aria-label="Edit Item"
-            icon={actions.edit ? <GrFormClose /> : <FiEdit />}
-            onClick={(e) => handleActions(e, "EDIT")}
+            icon={edit ? <GrFormClose /> : <FiEdit />}
+            onClick={() => setEdit(!edit)}
           />
           <IconButton
             name="delete"

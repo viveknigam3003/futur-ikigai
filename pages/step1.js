@@ -25,6 +25,7 @@ const Step1 = () => {
       const preList = lists[key].slice(0, index);
       const postList = lists[key].slice(index + 1);
       setLists({ ...lists, [key]: [...preList, value, ...postList] });
+      return true;
     }
   };
 
