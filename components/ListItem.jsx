@@ -18,8 +18,8 @@ const ListItem = ({
   const [edit, setEdit] = useState(false);
 
   const handleActions = (e, index) => {
-    handleEdits(e, index);
-    if (handleEdits(e, index)) {
+    const res = handleEdits(e, index);
+    if (res) {
       setEdit(false);
       setShowOptions(false);
     }

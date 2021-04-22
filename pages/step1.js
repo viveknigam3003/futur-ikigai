@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/layout";
+import { useToast } from "@chakra-ui/toast";
 import React, { createContext, useState } from "react";
 import ListContainer from "../components/List";
 import StepLayout from "../components/StepLayout";
@@ -8,6 +9,15 @@ export const ActionContext = createContext();
 
 const Step1 = () => {
   const [lists, setLists] = useState({ love: [], goodAt: [], worldNeeds: [] });
+  const toast = useToast();
+
+  const success = (title) => toast({
+    title,
+    variant: "subtle",
+    status: "success",
+    duration: 1000,
+    isClosable: true
+  });
 
   const handleAdd = (e) => {
     const key = e.target.name;
@@ -15,6 +25,7 @@ const Step1 = () => {
     if (e.key === "Enter") {
       setLists({ ...lists, [key]: [...lists[key], value] });
       e.target.value = "";
+      success("Item Added");
     }
   };
 
@@ -25,6 +36,7 @@ const Step1 = () => {
       const preList = lists[key].slice(0, index);
       const postList = lists[key].slice(index + 1);
       setLists({ ...lists, [key]: [...preList, value, ...postList] });
+      success("Item Edited");
       return true;
     }
   };
@@ -33,6 +45,7 @@ const Step1 = () => {
     const preList = lists[key].slice(0, index);
     const postList = lists[key].slice(index + 1);
     setLists({ ...lists, [key]: [...preList, ...postList] });
+    success("Item Deleted");
   };
 
   return (
