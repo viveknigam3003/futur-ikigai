@@ -100,6 +100,15 @@ const ListContainer = ({
         />
       </VStack>
       <MoreInfo />
+      <Box
+        display="flex"
+        justifyItems="center"
+        alignContent="flex-end"
+        flexDir="row-reverse"
+        pt="4"
+      >
+        <Text fontSize="xs">Total Items = {list.length}</Text>
+      </Box>
     </Box>
   );
 };
