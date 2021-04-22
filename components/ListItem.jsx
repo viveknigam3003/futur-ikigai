@@ -64,7 +64,7 @@ const ListItem = ({
       {showOptions && (
         <ButtonGroup>
           <IconButton
-            color="blue.500"
+            colorScheme="blue"
             name="edit"
             aria-label="Edit Item"
             icon={edit ? <GrFormClose /> : <FiEdit />}
@@ -72,7 +72,7 @@ const ListItem = ({
           />
           <IconButton
             name="delete"
-            color="red.600"
+            colorScheme="red"
             aria-label="Delete Item"
             icon={<RiDeleteBin6Line />}
             onClick={() => handleDelete(name, index)}
