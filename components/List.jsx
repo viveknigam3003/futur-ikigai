@@ -21,6 +21,7 @@ const ListContainer = ({
     },
   ],
   infoTitle = "No info found",
+  placeholder,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -40,7 +41,7 @@ const ListContainer = ({
         <Text fontSize="4xl" fontWeight="semibold">
           {title}
         </Text>
-        <Text color={`${color}.400`} fontSize="md">
+        <Text color={`${color}.500`} fontSize="md">
           {subtitle}
           <Tooltip label="Know more" aria-label="Know-More-Info">
             <IconButton
@@ -49,7 +50,7 @@ const ListContainer = ({
               size="sm"
               variant="ghost"
               onClick={onOpen}
-              color={`${color}.400`}
+              color={`${color}.500`}
             />
           </Tooltip>
         </Text>
@@ -68,7 +69,12 @@ const ListContainer = ({
             <Text>{item}</Text>
           </Box>
         ))}
-        <Input borderColor={`${color}.400`} name={id} onKeyDown={listHandler} />
+        <Input
+          borderColor={`${color}.400`}
+          name={id}
+          onKeyDown={listHandler}
+          placeholder={placeholder}
+        />
       </VStack>
       <Info isOpen={isOpen} onClose={onClose} title={infoTitle}>
         {infoContent.map((item, index) => (
@@ -76,6 +82,17 @@ const ListContainer = ({
             {item.body}
           </Text>
         ))}
+        <Box pt="8">
+          <Text fontSize="sm" color={`${color}.500`} pb="2">
+            Anything coming to your mind?
+          </Text>
+          <Input
+            borderColor="gray.400"
+            name={id}
+            onKeyDown={listHandler}
+            placeholder={placeholder}
+          />
+        </Box>
       </Info>
     </Box>
   );
