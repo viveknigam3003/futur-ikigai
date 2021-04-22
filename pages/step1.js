@@ -1,8 +1,10 @@
 import { Box } from "@chakra-ui/layout";
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import ListContainer from "../components/List";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";
+
+export const ActionContext = createContext();
 
 const Step1 = () => {
   const [lists, setLists] = useState({ love: [], goodAt: [], worldNeeds: [] });
@@ -17,8 +19,20 @@ const Step1 = () => {
   };
 
   const handleEdits = (e, index) => {
-    console.log(e.target.name, e.target.value, index)
-  }
+    const key = e.target.name;
+    const value = e.target.value;
+    if (e.key === "Enter") {
+      const preList = lists[key].slice(0, index);
+      const postList = lists[key].slice(index + 1);
+      setLists({ ...lists, [key]: [...preList, value, ...postList] });
+    }
+  };
+
+  const handleDelete = (key, index) => {
+    const preList = lists[key].slice(0, index);
+    const postList = lists[key].slice(index + 1);
+    setLists({ ...lists, [key]: [...preList, ...postList] });
+  };
 
   return (
     <StepLayout
@@ -42,7 +56,7 @@ const Step1 = () => {
           infoTitle="What you love 💝"
           infoContent={InfoText.love}
           list={lists.love}
-          listHandler={[handleAdd, handleEdits]}
+          listHandler={[handleAdd, handleEdits, handleDelete]}
           placeholder="I love ..."
         />
         <ListContainer
@@ -51,7 +65,7 @@ const Step1 = () => {
           subtitle="What do you believe you're good at?"
           color="yellow"
           list={lists.goodAt}
-          listHandler={[handleAdd, handleEdits]}
+          listHandler={[handleAdd, handleEdits, handleDelete]}
           placeholder="I am good at ..."
         />
         <ListContainer
@@ -60,7 +74,7 @@ const Step1 = () => {
           subtitle="What are some big problems in the world?"
           color="blue"
           list={lists.worldNeeds}
-          listHandler={[handleAdd, handleEdits]}
+          listHandler={[handleAdd, handleEdits, handleDelete]}
           placeholder="The world needs ..."
         />
       </Box>

@@ -4,7 +4,7 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { Input } from "@chakra-ui/input";
 import { Box, Text, VStack } from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/tooltip";
-import React, { useState } from "react";
+import React from "react";
 import { FiInfo } from "react-icons/fi";
 import Info from "./Info";
 import ListItem from "./ListItem";
@@ -26,7 +26,7 @@ const ListContainer = ({
   placeholder,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [handleAdd, handleEdits] = listHandler;
+  const [handleAdd, handleEdits, handleDelete] = listHandler;
 
   return (
     <Box
@@ -68,6 +68,7 @@ const ListContainer = ({
             backgroundColor={useColorModeValue(`${color}.50`, `${color}.500`)}
             color={useColorModeValue(`${color}.600` ,`${color}.50`)}
             handleEdits={handleEdits}
+            handleDelete={handleDelete}
           />
         ))}
         <Input
