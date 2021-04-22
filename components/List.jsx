@@ -1,11 +1,13 @@
 import { IconButton } from "@chakra-ui/button";
+import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Input } from "@chakra-ui/input";
 import { Box, Text, VStack } from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/tooltip";
-import React from "react";
+import React, { useState } from "react";
 import { FiInfo } from "react-icons/fi";
 import Info from "./Info";
+import ListItem from "./ListItem";
 
 const ListContainer = ({
   id,
@@ -24,6 +26,7 @@ const ListContainer = ({
   placeholder,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [handleAdd, handleEdits] = listHandler;
 
   return (
     <Box
@@ -57,22 +60,20 @@ const ListContainer = ({
       </Box>
       <VStack>
         {list.map((item, index) => (
-          <Box
+          <ListItem
+            name={id}
             key={index}
-            textAlign="left"
-            p="2"
-            backgroundColor={`${color}.50`}
-            shadow="base"
-            borderRadius="8px"
-            width="100%"
-          >
-            <Text>{item}</Text>
-          </Box>
+            item={item}
+            index={index}
+            backgroundColor={useColorModeValue(`${color}.50`, `${color}.500`)}
+            color={useColorModeValue(`${color}.600` ,`${color}.50`)}
+            handleEdits={handleEdits}
+          />
         ))}
         <Input
           borderColor={`${color}.400`}
           name={id}
-          onKeyDown={listHandler}
+          onKeyDown={handleAdd}
           placeholder={placeholder}
         />
       </VStack>
@@ -89,7 +90,7 @@ const ListContainer = ({
           <Input
             borderColor="gray.400"
             name={id}
-            onKeyDown={listHandler}
+            onKeyDown={handleAdd}
             placeholder={placeholder}
           />
         </Box>
