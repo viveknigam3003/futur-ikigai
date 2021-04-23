@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import ListContainer from "../components/List";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";
+import { LIST_KEY } from "../utils/constants";
 
-const K = "lists"; //storage-key
+const K = LIST_KEY; //storage-key
 
 const Step1 = () => {
   const initState = JSON.stringify({ love: [], goodAt: [], worldNeeds: [] });

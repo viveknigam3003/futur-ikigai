@@ -7,11 +7,11 @@ import { MoreInfo } from "../components/Info";
 import StepLayout from "../components/StepLayout";
 import Hints from "../data/Hints";
 import { generateCombo } from "../utils";
+import { COLOR_LIST, LIST_KEY } from "../utils/constants";
 
 const Step2 = () => {
-  const lists = JSON.parse(localStorage.getItem("lists"));
+  const lists = JSON.parse(localStorage.getItem(LIST_KEY));
   const combos = generateCombo(lists);
-  const colorList = ["red", "yellow", "blue"];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -28,8 +28,8 @@ const Step2 = () => {
             <TextCard
               item={item}
               key={item}
-              color={`${colorList[index]}.800`}
-              backgroundColor={`${colorList[index]}.100`}
+              color={`${COLOR_LIST[index]}.800`}
+              backgroundColor={`${COLOR_LIST[index]}.100`}
             />
           ))}
         </VStack>
