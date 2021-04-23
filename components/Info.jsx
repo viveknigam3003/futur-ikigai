@@ -1,5 +1,6 @@
 import {
   Button,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -7,7 +8,9 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Tooltip,
 } from "@chakra-ui/react";
+import { FiInfo } from "react-icons/fi";
 import React from "react";
 
 const Info = ({ isOpen, onClose, title, children }) => {
