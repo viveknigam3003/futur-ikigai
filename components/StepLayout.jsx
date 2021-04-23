@@ -32,6 +32,7 @@ const StepLayout = ({ pageTitle, navTitle, navSubtitle, color, children }) => {
         p="5rem 0"
         display="flex"
         flex="1"
+        width="100%"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"

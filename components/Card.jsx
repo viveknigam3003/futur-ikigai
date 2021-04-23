@@ -38,7 +38,7 @@ export const TextCard = ({ item, ...rest }) => (
   <Box
     p="2"
     mr="2"
-    flex="1 1 auto"
+    flex="1 1"
     textAlign="left"
     shadow="base"
     borderRadius="8px"
