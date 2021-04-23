@@ -1,13 +1,19 @@
+import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, VStack } from "@chakra-ui/layout";
 import React from "react";
+import BoxHeader from "../components/BoxHeader";
 import { TextCard } from "../components/Card";
+import { MoreInfo } from "../components/Info";
 import StepLayout from "../components/StepLayout";
+import Hints from "../data/Hints";
 import { generateCombo } from "../utils";
 
 const Step2 = () => {
   const lists = JSON.parse(localStorage.getItem("lists"));
   const combos = generateCombo(lists);
   const colorList = ["red", "yellow", "blue"];
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <StepLayout
@@ -27,6 +33,19 @@ const Step2 = () => {
             />
           ))}
         </VStack>
+        <BoxHeader
+          title="Tangible"
+          subtitle="Anything percieved by physical touch"
+          hasInfo
+          onClick={onOpen}
+        />
+        <MoreInfo
+          isOpen={isOpen}
+          onClose={onClose}
+          color="purple"
+          infoTitle="Some examples of tangible things are:"
+          infoContent={Hints.tangible}
+        />
       </Box>
     </StepLayout>
   );

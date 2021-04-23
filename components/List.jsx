@@ -4,7 +4,7 @@ import { Input } from "@chakra-ui/input";
 import { Box, Text, VStack } from "@chakra-ui/layout";
 import React from "react";
 import BoxHeader from "./BoxHeader";
-import Info from "./Info";
+import { MoreInfo } from "./Info";
 import ListItem from "./ListItem";
 
 const ListContainer = ({
@@ -14,38 +14,12 @@ const ListContainer = ({
   subtitle,
   list,
   listHandler,
-  infoContent = [
-    {
-      type: "p",
-      body: "It seems this section is empty or we could not fetch data for it.",
-    },
-  ],
-  infoTitle = "No info found",
+  infoContent,
+  infoTitle,
   placeholder,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [handleAdd, handleEdits, handleDelete] = listHandler;
-
-  const MoreInfo = () => (
-    <Info isOpen={isOpen} onClose={onClose} title={infoTitle}>
-      {infoContent.map((item, index) => (
-        <Text as={item.type} fontSize="sm" key={`${infoTitle}-${index}`}>
-          {item.body}
-        </Text>
-      ))}
-      <Box pt="8">
-        <Text fontSize="sm" color={`${color}.500`} pb="2">
-          Anything coming to your mind?
-        </Text>
-        <Input
-          borderColor="gray.400"
-          name={id}
-          onKeyDown={handleAdd}
-          placeholder={placeholder}
-        />
-      </Box>
-    </Info>
-  );
 
   return (
     <Box
@@ -88,7 +62,15 @@ const ListContainer = ({
           placeholder={placeholder}
         />
       </VStack>
-      <MoreInfo />
+      <MoreInfo
+        isOpen={isOpen}
+        onClose={onClose}
+        infoTitle={infoTitle}
+        infoContent={infoContent}
+        color={color}
+        hasInput
+        InputProps={{ name: id, onKeyDown: handleAdd, placeholder }}
+      />
       <Box
         display="flex"
         justifyItems="center"
