@@ -56,6 +56,7 @@ const Step2 = () => {
       <Box display="flex" flexDir={{base: "column", lg: "row"}} flexWrap={{base: "wrap", lg: "nowrap"}}>
         {combos.map((item, index) => (
           <Text
+            key={index}
             flex="1 1 auto"
             m="2"
             display="flex"
@@ -74,7 +75,7 @@ const Step2 = () => {
       <Box
         p={{ base: "0", lg: "2rem" }}
         display="flex"
-        alignItems="center"
+        alignItems="flex-start"
         justifyContent="space-evenly"
         width="100%"
         flexWrap={{ base: "wrap", md: "nowrap" }}
