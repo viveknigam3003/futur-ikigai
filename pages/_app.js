@@ -5,7 +5,7 @@ import "@fontsource/manrope";
 import Router from "next/router";
 import * as React from "react";
 import "../styles/globals.css";
-import theme from "./theme";
+import theme from "../styles/theme";
 
 const progress = new ProgressBar({
   size: 4,
