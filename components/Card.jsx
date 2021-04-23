@@ -34,4 +34,19 @@ const Card = ({ overline, title, body, color, backgroundColor, path }) => {
   );
 };
 
+export const TextCard = ({ item, ...rest }) => (
+  <Box
+    p="2"
+    mr="2"
+    flex="1 1 auto"
+    textAlign="left"
+    shadow="base"
+    borderRadius="8px"
+    width="100%"
+    {...rest}
+  >
+    <Text>{item}</Text>
+  </Box>
+);
+
 export default Card;
