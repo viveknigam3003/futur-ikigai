@@ -4,7 +4,7 @@ import * as React from "react";
 import Meta from "./Meta";
 import Navbar from "./Navbar";
 
-const StepLayout = ({ pageTitle, navTitle, navSubtitle, color, children }) => {
+const StepLayout = ({ pageTitle, navTitle, navSubtitle, color, children,  }) => {
   return (
     <Box
       minHeight="100vh"
@@ -34,7 +34,6 @@ const StepLayout = ({ pageTitle, navTitle, navSubtitle, color, children }) => {
         flex="1"
         width="100%"
         flexDirection="column"
-        justifyContent="center"
         alignItems="center"
         aria-label="Layout Children Wrapper"
       >

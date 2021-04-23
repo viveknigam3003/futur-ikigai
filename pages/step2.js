@@ -1,9 +1,8 @@
 import { useDisclosure } from "@chakra-ui/hooks";
-import { Box, VStack } from "@chakra-ui/layout";
+import { Box, Text } from "@chakra-ui/layout";
 import { Textarea } from "@chakra-ui/textarea";
 import React from "react";
 import BoxHeader from "../components/BoxHeader";
-import { TextCard } from "../components/Card";
 import { MoreInfo } from "../components/Info";
 import StepLayout from "../components/StepLayout";
 import IdeaBoxes from "../data/IdeaBox";
@@ -41,7 +40,7 @@ const Step2 = () => {
           infoTitle={infoTitle}
           infoContent={infoContent}
         />
-        <Textarea size="sm" placeholder={placeholder} />
+        <Textarea borderRadius="10px" size="sm" placeholder={placeholder} />
       </Box>
     );
   };
@@ -52,9 +51,28 @@ const Step2 = () => {
       navTitle="Finding Ikigai"
       navSubtitle="Crafting ideas to find your Ikigai."
       color="orange"
+      aria-label="Step Layout"
     >
+      <Box display="flex" flexDir={{base: "column", lg: "row"}} flexWrap={{base: "wrap", lg: "nowrap"}}>
+        {combos.map((item, index) => (
+          <Text
+            flex="1 1 auto"
+            m="2"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            borderRadius="10px"
+            color={`${COLOR_LIST[index]}.800`}
+            bg={`${COLOR_LIST[index]}.100`}
+            width="xs"
+            minHeight="16"
+          >
+            {item}
+          </Text>
+        ))}
+      </Box>
       <Box
-        p={{base: "0", lg: "2rem"}}
+        p={{ base: "0", lg: "2rem" }}
         display="flex"
         alignItems="center"
         justifyContent="space-evenly"

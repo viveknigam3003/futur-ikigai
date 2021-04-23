@@ -64,7 +64,7 @@ const Step1 = () => {
     >
       <Box
         display="flex"
-        alignItems={{ base: "center", lg: "flex-start" }}
+        alignItems="flex-start"
         justifyContent="space-evenly"
         flexWrap={{ base: "wrap", md: "nowrap" }}
         aria-label="Layout Child"
