@@ -87,6 +87,7 @@ const ListContainer = ({
             item={item}
             index={index}
             backgroundColor={useColorModeValue(`${color}.50`, `${color}.500`)}
+
             color={useColorModeValue(`${color}.600`, `${color}.50`)}
             handleEdits={handleEdits}
             handleDelete={handleDelete}

@@ -1,23 +1,30 @@
 import { Box } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
-import React, { createContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListContainer from "../components/List";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";
 
-export const ActionContext = createContext();
+const K = "lists"; //storage-key
 
 const Step1 = () => {
-  const [lists, setLists] = useState({ love: [], goodAt: [], worldNeeds: [] });
+  if (localStorage.getItem(K) === null)
+    localStorage.setItem(
+      K,
+      JSON.stringify({ love: [], goodAt: [], worldNeeds: [] })
+    );
+
+  const [lists, setLists] = useState(JSON.parse(localStorage.getItem(K)));
   const toast = useToast();
 
-  const success = (title) => toast({
-    title,
-    variant: "subtle",
-    status: "success",
-    duration: 1000,
-    isClosable: true
-  });
+  const success = (title) =>
+    toast({
+      title,
+      variant: "subtle",
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+    });
 
   const handleAdd = (e) => {
     const key = e.target.name;
@@ -47,6 +54,8 @@ const Step1 = () => {
     setLists({ ...lists, [key]: [...preList, ...postList] });
     success("Item Deleted");
   };
+
+  useEffect(() => localStorage.setItem(K, JSON.stringify(lists)), [lists]);
 
   return (
     <StepLayout

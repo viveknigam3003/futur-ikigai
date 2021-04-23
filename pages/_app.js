@@ -10,7 +10,7 @@ import theme from "./theme";
 const progress = new ProgressBar({
   size: 4,
   color: theme.colors.blue[300],
-  className: {zIndex: 50},
+  className: { zIndex: 50 },
   delay: 80,
 });
 
