@@ -8,11 +8,8 @@ import InfoText from "../data/Info";
 const K = "lists"; //storage-key
 
 const Step1 = () => {
-  if (localStorage.getItem(K) === null)
-    localStorage.setItem(
-      K,
-      JSON.stringify({ love: [], goodAt: [], worldNeeds: [] })
-    );
+  const initState = JSON.stringify({ love: [], goodAt: [], worldNeeds: [] });
+  if (localStorage.getItem(K) === null) localStorage.setItem(K, initState);
 
   const [lists, setLists] = useState(JSON.parse(localStorage.getItem(K)));
   const toast = useToast();
@@ -66,9 +63,9 @@ const Step1 = () => {
     >
       <Box
         display="flex"
-        alignItems={{base: "center", lg: "flex-start"}}
+        alignItems={{ base: "center", lg: "flex-start" }}
         justifyContent="space-evenly"
-        flexWrap={{base: "wrap", md: "nowrap"}}
+        flexWrap={{ base: "wrap", md: "nowrap" }}
         aria-label="Layout Child"
       >
         <ListContainer
