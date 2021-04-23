@@ -8,10 +8,10 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Tooltip,
+  Tooltip
 } from "@chakra-ui/react";
-import { FiInfo } from "react-icons/fi";
 import React from "react";
+import { FiInfo } from "react-icons/fi";
 
 const Info = ({ isOpen, onClose, title, children }) => {
   return (

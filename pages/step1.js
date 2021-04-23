@@ -1,8 +1,6 @@
-import { Button } from "@chakra-ui/button";
 import { Box } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import React, { useEffect, useState } from "react";
-import { FiArrowRight } from "react-icons/fi";
 import ListContainer from "../components/List";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";

@@ -1,11 +1,9 @@
-import { IconButton } from "@chakra-ui/button";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Input } from "@chakra-ui/input";
 import { Box, Text, VStack } from "@chakra-ui/layout";
-import { Tooltip } from "@chakra-ui/tooltip";
 import React from "react";
-import { FiInfo } from "react-icons/fi";
+import BoxHeader from "./BoxHeader";
 import Info from "./Info";
 import ListItem from "./ListItem";
 
@@ -49,19 +47,6 @@ const ListContainer = ({
     </Info>
   );
 
-  const InfoTooltip = () => (
-    <Tooltip label="Know more" aria-label="Know-More-Info">
-      <IconButton
-        icon={<FiInfo />}
-        isRound
-        size="sm"
-        variant="ghost"
-        onClick={onOpen}
-        color={`${color}.500`}
-      />
-    </Tooltip>
-  );
-
   return (
     <Box
       p="8"
@@ -75,15 +60,14 @@ const ListContainer = ({
       minHeight="50vh"
       aria-label="List Container"
     >
-      <Box mb="8">
-        <Text fontSize="4xl" fontWeight="semibold">
-          {title}
-        </Text>
-        <Text color={`${color}.500`} fontSize="md">
-          {subtitle}
-          <InfoTooltip/>
-        </Text>
-      </Box>
+      <BoxHeader
+        title={title}
+        subtitle={subtitle}
+        color={color}
+        hasInfo
+        onClick={onOpen}
+      />
+
       <VStack>
         {list.map((item, index) => (
           <ListItem
