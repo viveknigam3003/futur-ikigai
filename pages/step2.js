@@ -1,5 +1,6 @@
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, VStack } from "@chakra-ui/layout";
+import { Textarea } from "@chakra-ui/textarea";
 import React from "react";
 import BoxHeader from "../components/BoxHeader";
 import { TextCard } from "../components/Card";
@@ -33,19 +34,25 @@ const Step2 = () => {
             />
           ))}
         </VStack>
-        <BoxHeader
-          title="Tangible"
-          subtitle="Anything percieved by physical touch"
-          hasInfo
-          onClick={onOpen}
-        />
-        <MoreInfo
-          isOpen={isOpen}
-          onClose={onClose}
-          color="purple"
-          infoTitle="Some examples of tangible things are:"
-          infoContent={Hints.tangible}
-        />
+        <Box p="2" m="4">
+          <BoxHeader
+            title="Tangible"
+            subtitle="Anything percieved by physical touch"
+            hasInfo
+            onClick={onOpen}
+          />
+          <MoreInfo
+            isOpen={isOpen}
+            onClose={onClose}
+            color="purple"
+            infoTitle="Some examples of tangible things are:"
+            infoContent={Hints.tangible}
+          />
+          <Textarea
+          size="sm"
+            placeholder={`An idea of a tangible product with ${combos[0]} and ${combos[1]}, and try to incorporate ${combos[2]} to it.`}
+          />
+        </Box>
       </Box>
     </StepLayout>
   );
