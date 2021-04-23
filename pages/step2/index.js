@@ -2,12 +2,12 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
 import { Textarea } from "@chakra-ui/textarea";
 import React from "react";
-import BoxHeader from "../components/BoxHeader";
-import { MoreInfo } from "../components/Info";
-import StepLayout from "../components/StepLayout";
-import IdeaBoxes from "../data/IdeaBox";
-import { generateCombo } from "../utils";
-import { COLOR_LIST, LIST_KEY } from "../utils/constants";
+import BoxHeader from "../../components/BoxHeader";
+import { MoreInfo } from "../../components/Info";
+import StepLayout from "../../components/StepLayout";
+import IdeaBoxes from "../../data/IdeaBox";
+import { generateCombo } from "../../utils";
+import { COLOR_LIST, LIST_KEY } from "../../utils/constants";
 
 const Step2 = () => {
   const lists = JSON.parse(localStorage.getItem(LIST_KEY));
