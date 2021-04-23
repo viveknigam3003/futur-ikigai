@@ -29,4 +29,17 @@ const Info = ({ isOpen, onClose, title, children }) => {
   );
 };
 
+export const InfoTooltip = ({ onClick, color }) => (
+  <Tooltip label="Know more" aria-label="Know-More-Info">
+    <IconButton
+      icon={<FiInfo />}
+      isRound
+      size="sm"
+      variant="ghost"
+      onClick={onClick}
+      color={`${color}.500`}
+    />
+  </Tooltip>
+);
+
 export default Info;
