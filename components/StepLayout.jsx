@@ -30,14 +30,15 @@ const StepLayout = ({ pageTitle, navTitle, navSubtitle, color, children }) => {
       </Navbar>
       <Box
         p="5rem 0"
-        flex="1"
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
+        aria-label="Layout Children Wrapper"
       >
         {children}
       </Box>
+      
     </Box>
   );
 };

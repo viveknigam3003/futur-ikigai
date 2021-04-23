@@ -13,7 +13,6 @@ const Card = ({ overline, title, body, color, backgroundColor, path }) => {
         justifyContent="center"
         flexDirection="column"
         height="inherit"
-        flexBasis={{ base: "100%", md: "35%", lg: "40%" }}
         shadow={useColorModeValue("md", "dark-lg")}
         borderRadius="10px"
         transition="color 0.15s ease, background-color 0.15s ease, shadow 0.15s ease"

@@ -49,17 +49,31 @@ const ListContainer = ({
     </Info>
   );
 
+  const InfoTooltip = () => (
+    <Tooltip label="Know more" aria-label="Know-More-Info">
+      <IconButton
+        icon={<FiInfo />}
+        isRound
+        size="sm"
+        variant="ghost"
+        onClick={onOpen}
+        color={`${color}.500`}
+      />
+    </Tooltip>
+  );
+
   return (
     <Box
       p="8"
       m="2"
       borderRadius="10px"
       display="flex"
-      flexBasis={{ base: "auto", lg: "40%" }}
+      flexBasis={{ base: "90%", md: "40%" }}
       flexDir="column"
       color={`${color}.600`}
       backgroundColor={`${color}.100`}
       minHeight="50vh"
+      aria-label="List Container"
     >
       <Box mb="8">
         <Text fontSize="4xl" fontWeight="semibold">
@@ -67,16 +81,7 @@ const ListContainer = ({
         </Text>
         <Text color={`${color}.500`} fontSize="md">
           {subtitle}
-          <Tooltip label="Know more" aria-label="Know-More-Info">
-            <IconButton
-              icon={<FiInfo />}
-              isRound
-              size="sm"
-              variant="ghost"
-              onClick={onOpen}
-              color={`${color}.500`}
-            />
-          </Tooltip>
+          <InfoTooltip/>
         </Text>
       </Box>
       <VStack>
@@ -87,7 +92,6 @@ const ListContainer = ({
             item={item}
             index={index}
             backgroundColor={useColorModeValue(`${color}.50`, `${color}.500`)}
-
             color={useColorModeValue(`${color}.600`, `${color}.50`)}
             handleEdits={handleEdits}
             handleDelete={handleDelete}
