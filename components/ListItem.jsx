@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { GrFormClose } from "react-icons/gr";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { TextCard } from "./Card";
 
 const ListItem = ({
   item,
@@ -25,22 +26,6 @@ const ListItem = ({
     }
   };
 
-  const TextItem = () => (
-    <Box
-      p="2"
-      mr="2"
-      flex="1 1 auto"
-      textAlign="left"
-      shadow="base"
-      borderRadius="8px"
-      width="100%"
-      onClick={() => setShowOptions(!showOptions)}
-      {...rest}
-    >
-      <Text>{item}</Text>
-    </Box>
-  );
-
   return (
     <Box
       width="100%"
@@ -59,7 +44,11 @@ const ListItem = ({
           defaultValue={item}
         />
       ) : (
-        <TextItem />
+        <TextCard
+          item={item}
+          onClick={() => setShowOptions(!showOptions)}
+          {...rest}
+        />
       )}
       {showOptions && (
         <ButtonGroup>
