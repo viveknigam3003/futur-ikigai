@@ -30,7 +30,9 @@ const Step2 = () => {
           Now in this step we would generate you a random combination of one
           thing you love, one you're good at, and one the world needs
         </Text>
-      <Button my="2" colorScheme="orange">Generate New Combination</Button>
+        <Button my="2" colorScheme="orange">
+          Generate New Combination
+        </Button>
       </Box>
       <Box width="100%" px={{ base: "8", md: "12", lg: "16" }} py="8">
         <Text
@@ -51,7 +53,15 @@ const Step2 = () => {
           <Tbody>
             {data.map((item) => (
               <Link href={`/step2/${item.id}`}>
-                <Tr cursor="pointer" _hover={{ backgroundColor: "whiteAlpha.100" }}>
+                <Tr
+                  cursor="pointer"
+                  _hover={{
+                    backgroundColor: useColorModeValue(
+                      "gray.200",
+                      "whiteAlpha.100"
+                    ),
+                  }}
+                >
                   <Td>{item.id}</Td>
                   <Td>{item.name}</Td>
                   <Td>{item.combo.join(", ")}</Td>
