@@ -2,7 +2,7 @@ export const Ideas = [
   {
     id: "1",
     name: "Idea #1",
-    combo: [],
+    combo: ["One", "Two", "Three"],
     idea: { tangible: "", digital: "", service: "" },
   },
   {
