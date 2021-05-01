@@ -1,3 +1,4 @@
+import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Editable, EditableInput, EditablePreview } from "@chakra-ui/editable";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
@@ -56,7 +57,7 @@ const Idea = ({ data }) => {
         p={{ base: "2" }}
         fontSize="4xl"
         fontWeight="semibold"
-        color="ActiveCaption"
+        color={useColorModeValue("GrayText","ActiveCaption")}
         defaultValue={`Idea #${data.id}`}
       >
         <EditablePreview />
