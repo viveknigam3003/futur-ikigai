@@ -73,7 +73,7 @@ const Step2 = () => {
           </Thead>
           <Tbody>
             {ideas.map((item) => (
-              <Link key={item.id} href={`/step2/${item.id}`}>
+              <Link key={item.id} href="/step2/[id]" as={`/step2/${item.id}`}>
                 <Tr
                   cursor="pointer"
                   _hover={{
