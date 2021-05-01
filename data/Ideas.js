@@ -2,7 +2,7 @@ const Ideas = [
   {
     id: "1",
     name: "Idea #1",
-    combo: ["One", "Two", "Three"],
+    combo: ["What you love", "What you're good at", "What the world needs"],
     idea: { tangible: "", digital: "", service: "" },
   },
   {
