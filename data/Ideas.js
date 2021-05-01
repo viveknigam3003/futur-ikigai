@@ -1,4 +1,4 @@
-export const Ideas = [
+const Ideas = [
   {
     id: "1",
     name: "Idea #1",
@@ -18,3 +18,5 @@ export const Ideas = [
     idea: { tangible: "", digital: "", service: "" },
   },
 ];
+
+export default Ideas;
