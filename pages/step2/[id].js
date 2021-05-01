@@ -17,8 +17,6 @@ const Idea = ({ id }) => {
   const combo = idea.combo;
   const IdeaBoxData = IdeaBoxes(combo);
 
-  useEffect(() => console.log(idea), [idea]);
-
   const IdeaBox = ({
     title,
     subtitle,
@@ -114,10 +112,10 @@ const Idea = ({ id }) => {
 };
 
 export const getServerSideProps = (context) => {
-  const {id} = context.params;
+  const { id } = context.params;
   return {
     props: { id }, // will be passed to the page component as props
   };
-}
+};
 
 export default Idea;
