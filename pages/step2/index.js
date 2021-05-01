@@ -3,11 +3,33 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Box, Text } from "@chakra-ui/layout";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StepLayout from "../../components/StepLayout";
-import { SERVER } from "../../config";
+import { generateCombo } from "../../utils";
+import { IDEAS_KEY, LIST_KEY } from "../../utils/constants";
 
-const Step2 = ({ data }) => {
+const K = IDEAS_KEY; //storage-key-ideas
+const L = LIST_KEY;
+
+const Step2 = () => {
+  if (localStorage.getItem(K) === null)
+    localStorage.setItem(K, JSON.stringify([]));
+  const [ideas, setIdeas] = useState(JSON.parse(localStorage.getItem(K)));
+  const lists = JSON.parse(localStorage.getItem(L));
+
+  const handleClick = () => {
+    const index = ideas.length + 1;
+    const IdeaObject = {
+      id: index,
+      name: `Idea #${index}`,
+      combo: generateCombo(lists),
+      idea: { tangible: "", digital: "", service: "" },
+    };
+    setIdeas([...ideas, IdeaObject]);
+  };
+
+  useEffect(() => localStorage.setItem(K, JSON.stringify(ideas)), [ideas]);
+
   return (
     <StepLayout
       pageTitle="STEP 2: Finding Ikigai"
@@ -29,7 +51,7 @@ const Step2 = ({ data }) => {
           Now in this step we would generate you a random combination of one
           thing you love, one you're good at, and one the world needs
         </Text>
-        <Button my="2" colorScheme="orange">
+        <Button my="2" colorScheme="orange" onClick={handleClick}>
           Generate New Combination
         </Button>
       </Box>
@@ -50,7 +72,7 @@ const Step2 = ({ data }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {data.map((item) => (
+            {ideas.map((item) => (
               <Link key={item.id} href={`/step2/${item.id}`}>
                 <Tr
                   cursor="pointer"
@@ -72,18 +94,6 @@ const Step2 = ({ data }) => {
       </Box>
     </StepLayout>
   );
-};
-
-export const getStaticProps = async () => {
-  const res = await fetch(`${SERVER}/api/ideas`);
-
-  const data  = await res.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
 };
 
 export default Step2;
