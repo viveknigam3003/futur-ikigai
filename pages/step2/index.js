@@ -5,7 +5,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table";
 import Link from "next/link";
 import React from "react";
 import StepLayout from "../../components/StepLayout";
-import { Ideas } from "../../data/Ideas";
+import Ideas from "../../data/Ideas";
 
 const Step2 = () => {
   const data = Ideas;
@@ -42,7 +42,7 @@ const Step2 = () => {
         >
           Your Idea List
         </Text>
-        <Table variant="simple" size="md" w={{ lg: "xl" }}>
+        <Table variant="simple" size="md" w={{lg: "2xl"}}>
           <Thead>
             <Tr>
               <Th>#</Th>
