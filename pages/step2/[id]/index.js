@@ -1,21 +1,17 @@
+import { Editable, EditableInput, EditablePreview } from "@chakra-ui/editable";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
 import { Textarea } from "@chakra-ui/textarea";
-import { useRouter } from "next/router";
 import React from "react";
 import BoxHeader from "../../../components/BoxHeader";
 import { MoreInfo } from "../../../components/Info";
 import StepLayout from "../../../components/StepLayout";
+import { SERVER } from "../../../config";
 import IdeaBoxes from "../../../data/IdeaBox";
-import { generateCombo } from "../../../utils";
-import { COLOR_LIST, LIST_KEY } from "../../../utils/constants";
+import { COLOR_LIST } from "../../../utils/constants";
 
-const Idea = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const lists = JSON.parse(localStorage.getItem(LIST_KEY));
-  const combos = generateCombo(lists);
-
+const Idea = ({ data }) => {
+  const combos = data.combo;
   const IdeaBoxData = IdeaBoxes(combos);
 
   const IdeaBox = ({
@@ -56,14 +52,16 @@ const Idea = () => {
       color="orange"
       aria-label="Step Layout"
     >
-      <Text
+      <Editable
         p={{ base: "2" }}
         fontSize="4xl"
         fontWeight="semibold"
         color="ActiveCaption"
+        defaultValue={`Idea #${data.id}`}
       >
-        Idea #{id}
-      </Text>
+        <EditablePreview />
+        <EditableInput />
+      </Editable>
       <Box
         display="flex"
         flexDir={{ base: "column", lg: "row" }}
@@ -108,6 +106,32 @@ const Idea = () => {
       </Box>
     </StepLayout>
   );
+};
+
+export const getStaticProps = async (context) => {
+  const res = await fetch(`${SERVER}/api/ideas/${context.params.id}`);
+
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  const res = await fetch(`${SERVER}/api/ideas`);
+
+  const ideas = await res.json();
+
+  const ids = ideas.map((item) => item.id);
+  const paths = ids.map((id) => ({ params: { id: id.toString() } }));
+
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 export default Idea;
