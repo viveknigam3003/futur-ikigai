@@ -3,17 +3,21 @@ import { Editable, EditableInput, EditablePreview } from "@chakra-ui/editable";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
 import { Textarea } from "@chakra-ui/textarea";
-import React from "react";
-import BoxHeader from "../../../components/BoxHeader";
-import { MoreInfo } from "../../../components/Info";
-import StepLayout from "../../../components/StepLayout";
-import { SERVER } from "../../../config";
-import IdeaBoxes from "../../../data/IdeaBox";
-import { COLOR_LIST } from "../../../utils/constants";
+import React, { useEffect, useState } from "react";
+import BoxHeader from "../../components/BoxHeader";
+import { MoreInfo } from "../../components/Info";
+import StepLayout from "../../components/StepLayout";
+import IdeaBoxes from "../../data/IdeaBox";
+import { COLOR_LIST, IDEAS_KEY } from "../../utils/constants";
 
-const Idea = ({ data }) => {
-  const combos = data.combo;
-  const IdeaBoxData = IdeaBoxes(combos);
+const K = IDEAS_KEY;
+const Idea = ({ id }) => {
+  const initialState = JSON.parse(localStorage.getItem(K));
+  const [idea, setIdea] = useState(initialState[id - 1]);
+  const combo = idea.combo;
+  const IdeaBoxData = IdeaBoxes(combo);
+
+  useEffect(() => console.log(idea), [idea]);
 
   const IdeaBox = ({
     title,
@@ -58,7 +62,7 @@ const Idea = ({ data }) => {
         fontSize="4xl"
         fontWeight="semibold"
         color={useColorModeValue("GrayText", "ActiveCaption")}
-        defaultValue={`Idea #${data.id}`}
+        defaultValue={`Idea #${idea.id}`}
       >
         <EditablePreview />
         <EditableInput />
@@ -68,7 +72,7 @@ const Idea = ({ data }) => {
         flexDir={{ base: "column", lg: "row" }}
         flexWrap={{ base: "wrap", lg: "nowrap" }}
       >
-        {combos.map((item, index) => (
+        {combo.map((item, index) => (
           <Text
             key={index}
             flex="1 1 auto"
@@ -109,30 +113,11 @@ const Idea = ({ data }) => {
   );
 };
 
-export const getStaticProps = async (context) => {
-  const res = await fetch(`${SERVER}/api/ideas/${context.params.id}`);
-
-  const data = await res.json();
-
+export const getServerSideProps = (context) => {
+  const {id} = context.params;
   return {
-    props: {
-      data,
-    },
+    props: { id }, // will be passed to the page component as props
   };
-};
-
-export const getStaticPaths = async () => {
-  const res = await fetch(`${SERVER}/api/ideas`);
-
-  const data  = await res.json();
-
-  const ids = data.map((item) => item.id);
-  const paths = ids.map((id) => ({ params: { id: id.toString() } }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
+}
 
 export default Idea;
