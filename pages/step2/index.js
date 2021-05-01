@@ -77,7 +77,7 @@ const Step2 = ({ data }) => {
 export const getStaticProps = async () => {
   const res = await fetch(`${SERVER}/api/ideas`);
 
-  const { data } = await res.json();
+  const data  = await res.json();
 
   return {
     props: {
