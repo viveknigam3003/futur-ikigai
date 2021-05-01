@@ -5,10 +5,9 @@ import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table";
 import Link from "next/link";
 import React from "react";
 import StepLayout from "../../components/StepLayout";
-import Ideas from "../../data/Ideas";
+import { SERVER } from "../../config";
 
-const Step2 = () => {
-  const data = Ideas;
+const Step2 = ({ data }) => {
   return (
     <StepLayout
       pageTitle="STEP 2: Finding Ikigai"
@@ -42,7 +41,7 @@ const Step2 = () => {
         >
           Your Idea List
         </Text>
-        <Table variant="simple" size="md" w={{lg: "2xl"}}>
+        <Table variant="simple" size="md" w={{ lg: "2xl" }}>
           <Thead>
             <Tr>
               <Th>#</Th>
@@ -73,6 +72,18 @@ const Step2 = () => {
       </Box>
     </StepLayout>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await fetch(`${SERVER}/api/ideas`);
+
+  const { data } = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
 };
 
 export default Step2;

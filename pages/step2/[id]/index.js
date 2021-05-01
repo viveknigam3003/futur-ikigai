@@ -57,7 +57,7 @@ const Idea = ({ data }) => {
         p={{ base: "2" }}
         fontSize="4xl"
         fontWeight="semibold"
-        color={useColorModeValue("GrayText","ActiveCaption")}
+        color={useColorModeValue("GrayText", "ActiveCaption")}
         defaultValue={`Idea #${data.id}`}
       >
         <EditablePreview />
@@ -124,9 +124,9 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
   const res = await fetch(`${SERVER}/api/ideas`);
 
-  const ideas = await res.json();
+  const { data } = await res.json();
 
-  const ids = ideas.map((item) => item.id);
+  const ids = data.map((item) => item.id);
   const paths = ids.map((id) => ({ params: { id: id.toString() } }));
 
   return {
