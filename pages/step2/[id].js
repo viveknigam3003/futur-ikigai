@@ -9,16 +9,16 @@ import IdeaBox from "../../components/IdeaBox";
 import StepLayout from "../../components/StepLayout";
 import IdeaBoxes from "../../data/IdeaBox";
 import { COLOR_LIST, IDEAS_KEY } from "../../utils/constants";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 const Idea = ({ id }) => {
-  const initialState = JSON.parse(localStorage.getItem(IDEAS_KEY));
-  const [idea, setIdea] = useState(initialState[id - 1]);
+  const ideas = JSON.parse(localStorage.getItem(IDEAS_KEY));
+  const res = ideas.filter((item) => item.id === id)[0];
+  const [idea, setIdea] = useState(res);
   const combo = idea.combo;
   const IdeaBoxData = IdeaBoxes(combo);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
-
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -27,13 +27,10 @@ const Idea = ({ id }) => {
   };
 
   const handleSubmit = async () => {
-    const ideas = JSON.parse(localStorage.getItem(IDEAS_KEY));
-    const preList = ideas.slice(0, id - 1);
-    const postList = ideas.slice(id);
-    localStorage.setItem(
-      IDEAS_KEY,
-      JSON.stringify([...preList, idea, ...postList])
-    );
+    const index = ideas.map((item) => item.id).indexOf(id);
+    const nextList = [... ideas];
+    nextList.splice(index, 1, idea);
+    localStorage.setItem(IDEAS_KEY, JSON.stringify(nextList));
   };
 
   const handleTextAreaChange = (e) => {
@@ -43,11 +40,11 @@ const Idea = ({ id }) => {
   };
 
   const handleDelete = () => {
-    const filteredIdeas = initialState.filter(item => item.id.toString() !== id);
+    const filteredIdeas = ideas.filter((item) => item.id.toString() !== id);
     localStorage.setItem(IDEAS_KEY, JSON.stringify(filteredIdeas));
 
     onClose();
-    router.push('/step2');
+    router.push("/step2");
   };
 
   useEffect(() => {
@@ -146,7 +143,6 @@ export const getServerSideProps = (context) => {
 
 const MenuItems = ({ openRemoveDialog }) => (
   <Fragment>
-    {/* <MenuItem as="a" href="https://youtu.be/BAzs3amtEFA" target="_blank">Know More</MenuItem> */}
     <MenuItem color="red.400" onClick={openRemoveDialog}>
       Delete Idea
     </MenuItem>

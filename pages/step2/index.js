@@ -9,7 +9,7 @@ import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
 import ActionModal from "../../components/ActionModal";
 import StepLayout from "../../components/StepLayout";
-import { generateCombo } from "../../utils";
+import { generateCombo, getUniqueID } from "../../utils";
 import { IDEAS_KEY, LIST_KEY } from "../../utils/constants";
 
 const K = IDEAS_KEY; //storage-key-ideas
@@ -24,10 +24,10 @@ const Step2 = () => {
   const toast = useToast();
 
   const handleClick = () => {
-    const index = ideas.length + 1;
+    const id = getUniqueID();
     const IdeaObject = {
-      id: index,
-      name: `Idea #${index}`,
+      id: id,
+      name: `Untitled`,
       combo: generateCombo(lists),
       idea: { tangible: "", digital: "", service: "" },
     };

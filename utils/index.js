@@ -11,3 +11,5 @@ export const getRandomElement = (list) => {
 
 export const generateCombo = (lists) =>
   Object.keys(lists).map((key) => getRandomElement(lists[key]));
+
+export const getUniqueID = () => Math.random().toString(36).substr(2, 9);
