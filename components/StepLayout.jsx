@@ -1,6 +1,7 @@
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Box, Text } from "@chakra-ui/layout";
 import * as React from "react";
+import Footer from "./Footer";
 import Meta from "./Meta";
 import Navbar from "./Navbar";
 
@@ -39,6 +40,7 @@ const StepLayout = ({ pageTitle, navTitle, navSubtitle, color, children, menuIte
       >
         {children}
       </Box>
+      <Footer/>
     </Box>
   );
 };
