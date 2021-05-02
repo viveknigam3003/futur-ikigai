@@ -27,6 +27,7 @@ export default function Home() {
       duration: 9000,
       isClosable: true,
     });
+    onClose();
   };
 
   return (
@@ -73,7 +74,7 @@ export default function Home() {
           buttonText="Confirm Reset"
         >
           Resetting the application will delete all its data on this device.
-          This action is irreversible. Do you wish to continue?
+          This action is irreversible.<br/><br/> Do you wish to continue?
         </ActionModal>
       </main>
 
