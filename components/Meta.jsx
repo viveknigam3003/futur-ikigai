@@ -3,16 +3,16 @@ import Head from "next/head";
 
 const Meta = ({
   title,
-  type = "website",
+  type,
   image,
-  author = "Vivek Nigam",
-  copyright = "Vivek Nigam",
-  isCrawlable = true,
-  favicon = "/favicon.ico",
+  author,
+  copyright,
+  isCrawlable,
+  favicon,
   url,
-  description = "Find your Ikigai with the Chris Do (The Futur) method.",
-  siteName = "Find your Ikigai",
-  twitter = "@_viveknigam_",
+  description,
+  siteName,
+  twitter,
 }) => {
   return (
     <Head>
@@ -43,25 +43,17 @@ const Meta = ({
   );
 };
 
-// const OGMeta = (type, title, description, image, url, siteName) => {
-//   <>
-//     <meta property="og:type" content={type} key="type" />
-//     <meta property="og:title" content={title} key="title" />
-//     <meta property="og:description" content={description} key="description" />
-//     <meta property="og:image" content={image} key="image" />
-//     <meta property="og:url" content={url} key="url" />
-//     <meta property="og:site_name" content={siteName} key="site_name" />
-//   </>;
-// };
-
-// const TwitterTags = ({ username, title, description, image }) => (
-//   <>
-//     <meta name="twitter:title" content={title} key="title" />
-//     <meta name="twitter:description" content={description} key="description" />
-//     <meta name="twitter:image" content={image} key="image" />
-//     <meta name="twitter:site" content={username} />
-//     <meta name="twitter:creator" content={username} />
-//   </>
-// );
+Meta.defaultProps = {
+  title: "Find your Ikigai (The Futur X VN)",
+  type: "website",
+  author: "Vivek Nigam",
+  copyright: "Vivek Nigam",
+  isCrawlable: true,
+  favicon: "/favicon.ico",
+  url: "https://futur-ikigai.vercel.app",
+  description: "Find your Ikigai with the Chris Do (The Futur) method.",
+  siteName: "Find your Ikigai",
+  twitter: "@_viveknigam_",
+};
 
 export default Meta;
