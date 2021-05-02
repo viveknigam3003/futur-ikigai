@@ -28,7 +28,7 @@ const Idea = ({ id }) => {
 
   const handleSubmit = async () => {
     const index = ideas.map((item) => item.id).indexOf(id);
-    const nextList = [... ideas];
+    const nextList = [...ideas];
     nextList.splice(index, 1, idea);
     localStorage.setItem(IDEAS_KEY, JSON.stringify(nextList));
   };

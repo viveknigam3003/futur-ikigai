@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
 import Navbar from "../components/Navbar";
+import ShareTwitter from "../components/ShareTwitter";
 import styles from "../styles/Home.module.css";
 import { IDEAS_KEY, LIST_KEY } from "../utils/constants";
 
@@ -33,7 +34,10 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Meta title="Find your Ikigai" />
-      <Navbar menuItems={<MenuItems openResetDialog={onOpen} />} />
+      <Navbar
+        menuItems={<MenuItems openResetDialog={onOpen} />}
+        navButtons={<ShareTwitter />}
+      />
       <main className={styles.main}>
         <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
 
@@ -74,7 +78,9 @@ export default function Home() {
           buttonText="Confirm Reset"
         >
           Resetting the application will delete all its data on this device.
-          This action is irreversible.<br/><br/> Do you wish to continue?
+          This action is irreversible.
+          <br />
+          <br /> Do you wish to continue?
         </ActionModal>
       </main>
 
@@ -85,7 +91,9 @@ export default function Home() {
 
 const MenuItems = ({ openResetDialog }) => (
   <Fragment>
-    <MenuItem as="a" href="https://youtu.be/BAzs3amtEFA" target="_blank">Know More</MenuItem>
+    <MenuItem as="a" href="https://youtu.be/BAzs3amtEFA" target="_blank">
+      Know More
+    </MenuItem>
     <MenuItem color="red.400" onClick={openResetDialog}>
       Reset App
     </MenuItem>

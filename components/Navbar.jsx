@@ -8,8 +8,9 @@ import { Tooltip } from "@chakra-ui/tooltip";
 import React from "react";
 import { BsGearFill } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { TwitterShareButton } from "react-twitter-embed";
 
-const Navbar = ({ children, menuItems }) => {
+const Navbar = ({ children, menuItems, navButtons }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box
@@ -21,6 +22,8 @@ const Navbar = ({ children, menuItems }) => {
       p={{ base: "2rem 1.5rem 1rem 1.5rem", md: "1rem 3rem", lg: "1rem 4rem" }}
     >
       <HStack>
+        {navButtons}
+
         <Tooltip label="Toggle Dark Mode" aria-label="Dark-Mode">
           <IconButton
             onClick={toggleColorMode}
