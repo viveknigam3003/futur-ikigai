@@ -1,9 +1,13 @@
 import { Button } from "@chakra-ui/button";
 import { useColorModeValue } from "@chakra-ui/color-mode";
+import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
+import { MenuItem } from "@chakra-ui/menu";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table";
+import { useToast } from "@chakra-ui/toast";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import ActionModal from "../../components/ActionModal";
 import StepLayout from "../../components/StepLayout";
 import { generateCombo } from "../../utils";
 import { IDEAS_KEY, LIST_KEY } from "../../utils/constants";
@@ -16,6 +20,8 @@ const Step2 = () => {
     localStorage.setItem(K, JSON.stringify([]));
   const [ideas, setIdeas] = useState(JSON.parse(localStorage.getItem(K)));
   const lists = JSON.parse(localStorage.getItem(L));
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
 
   const handleClick = () => {
     const index = ideas.length + 1;
@@ -28,6 +34,20 @@ const Step2 = () => {
     setIdeas([...ideas, IdeaObject]);
   };
 
+  const handleReset = () => {
+    localStorage.setItem(K, JSON.stringify([]));
+    setIdeas(JSON.parse(localStorage.getItem(K)));
+
+    toast({
+      title: "Ideas Cleared!",
+      description: "You can now start over successfully",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+    onClose();
+  };
+
   useEffect(() => localStorage.setItem(K, JSON.stringify(ideas)), [ideas]);
 
   return (
@@ -37,6 +57,7 @@ const Step2 = () => {
       navSubtitle="Crafting ideas to find your Ikigai."
       color="orange"
       aria-label="Step Layout"
+      menuItems={<MenuItems openClearListDialog={onOpen} />}
     >
       <Box px={{ base: "8", md: "12", lg: "16" }} w="100%">
         <Text pb="4" fontSize="4xl" fontWeight="semibold">
@@ -92,8 +113,33 @@ const Step2 = () => {
           </Tbody>
         </Table>
       </Box>
+      <ActionModal
+        title="Are you sure you want to clear all ideas?"
+        isOpen={isOpen}
+        onClose={onClose}
+        onClick={handleReset}
+        buttonText="Clear Ideas"
+      >
+        Clearing the ideas will remove all the data for this page. This action
+        is irreversible.
+        <br />
+        <br /> Do you wish to continue?
+      </ActionModal>
     </StepLayout>
   );
 };
+
+const MenuItems = ({ openClearListDialog }) => (
+  <Fragment>
+    <MenuItem
+      as="a"
+      href="https://youtu.be/BAzs3amtEFA?t=54m33s"
+      target="_blank"
+    >
+      Know More
+    </MenuItem>
+    <MenuItem onClick={openClearListDialog}>Clear Ideas</MenuItem>
+  </Fragment>
+);
 
 export default Step2;
