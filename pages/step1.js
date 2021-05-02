@@ -1,6 +1,9 @@
+import { useDisclosure } from "@chakra-ui/hooks";
 import { Box } from "@chakra-ui/layout";
+import { MenuItem } from "@chakra-ui/menu";
 import { useToast } from "@chakra-ui/toast";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import ActionModal from "../components/ActionModal";
 import ListContainer from "../components/List";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";
@@ -13,6 +16,7 @@ const Step1 = () => {
   if (localStorage.getItem(K) === null) localStorage.setItem(K, initState);
 
   const [lists, setLists] = useState(JSON.parse(localStorage.getItem(K)));
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
   const success = (title) =>
@@ -53,6 +57,20 @@ const Step1 = () => {
     success("Item Deleted");
   };
 
+  const handleReset = () => {
+    localStorage.setItem(K, initState);
+    setLists(JSON.parse(localStorage.getItem(K)));
+
+    toast({
+      title: "Lists Cleared!",
+      description: "You can now start over successfully",
+      status: "success",
+      duration: 6000,
+      isClosable: true,
+    });
+    onClose();
+  };
+
   useEffect(() => localStorage.setItem(K, JSON.stringify(lists)), [lists]);
 
   return (
@@ -61,6 +79,7 @@ const Step1 = () => {
       navTitle="Looking Inside"
       navSubtitle="What you love, what you're good at, and what the world needs?"
       color="blue"
+      menuItems={<MenuItems openClearListDialog={onOpen} />}
     >
       <Box
         display="flex"
@@ -99,8 +118,25 @@ const Step1 = () => {
           placeholder="The world needs ..."
         />
       </Box>
+      <ActionModal
+        title="Are you sure you want to clear lists?"
+        isOpen={isOpen}
+        onClose={onClose}
+        onClick={handleReset}
+        buttonText="Clear lists"
+      >
+        Clearing the lists will remove all the data for this page. This action
+        is irreversible.<br/><br/> Do you wish to continue?
+      </ActionModal>
     </StepLayout>
   );
 };
+
+const MenuItems = ({ openClearListDialog }) => (
+  <Fragment>
+    <MenuItem>Know More</MenuItem>
+    <MenuItem onClick={openClearListDialog}>Clear Lists</MenuItem>
+  </Fragment>
+);
 
 export default Step1;
