@@ -72,7 +72,7 @@ const Step2 = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {ideas.map((item) => (
+            {ideas.map((item, index) => (
               <Link key={item.id} href="/step2/[id]" as={`/step2/${item.id}`}>
                 <Tr
                   cursor="pointer"
@@ -83,7 +83,7 @@ const Step2 = () => {
                     ),
                   }}
                 >
-                  <Td>{item.id}</Td>
+                  <Td>{index + 1}</Td>
                   <Td>{item.name}</Td>
                   <Td>{item.combo.join(", ")}</Td>
                 </Tr>
