@@ -1,10 +1,13 @@
+import { Button } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box } from "@chakra-ui/layout";
 import { MenuItem } from "@chakra-ui/menu";
 import { useToast } from "@chakra-ui/toast";
+import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
 import ActionModal from "../components/ActionModal";
 import ListContainer from "../components/List";
+import PageNav from "../components/PageNav";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";
 import { LIST_KEY } from "../utils/constants";
@@ -126,15 +129,27 @@ const Step1 = () => {
         buttonText="Clear lists"
       >
         Clearing the lists will remove all the data for this page. This action
-        is irreversible.<br/><br/> Do you wish to continue?
+        is irreversible.
+        <br />
+        <br /> Do you wish to continue?
       </ActionModal>
+      <PageNav
+        prevProps={{link: "/", text: "Back to Home"}}
+        nextProps={{link: "/step2", color: "orange", text: "Next Step: Finding Ikigai"}}
+      />
     </StepLayout>
   );
 };
 
 const MenuItems = ({ openClearListDialog }) => (
   <Fragment>
-    <MenuItem as="a" href="https://youtu.be/BAzs3amtEFA?t=8m51s" target="_blank">Know More</MenuItem>
+    <MenuItem
+      as="a"
+      href="https://youtu.be/BAzs3amtEFA?t=8m51s"
+      target="_blank"
+    >
+      Know More
+    </MenuItem>
     <MenuItem onClick={openClearListDialog}>Clear Lists</MenuItem>
   </Fragment>
 );

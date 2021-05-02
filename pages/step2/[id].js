@@ -10,6 +10,7 @@ import StepLayout from "../../components/StepLayout";
 import IdeaBoxes from "../../data/IdeaBox";
 import { COLOR_LIST, IDEAS_KEY } from "../../utils/constants";
 import { useRouter } from "next/router";
+import PageNav from "../../components/PageNav";
 
 const Idea = ({ id }) => {
   const ideas = JSON.parse(localStorage.getItem(IDEAS_KEY));
@@ -130,6 +131,7 @@ const Idea = ({ id }) => {
         <br />
         <br /> Do you wish to continue?
       </ActionModal>
+      <PageNav prevProps={{ link: "/step2", text: "Back to all ideas" }} />
     </StepLayout>
   );
 };

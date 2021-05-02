@@ -8,6 +8,7 @@ import { useToast } from "@chakra-ui/toast";
 import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
 import ActionModal from "../../components/ActionModal";
+import PageNav from "../../components/PageNav";
 import StepLayout from "../../components/StepLayout";
 import { generateCombo, getUniqueID } from "../../utils";
 import { IDEAS_KEY, LIST_KEY } from "../../utils/constants";
@@ -125,6 +126,7 @@ const Step2 = () => {
         <br />
         <br /> Do you wish to continue?
       </ActionModal>
+      <PageNav prevProps={{ link: "/step1", color: "blue", text: "Back to Step 1" }} />
     </StepLayout>
   );
 };
