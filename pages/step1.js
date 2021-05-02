@@ -107,6 +107,8 @@ const Step1 = () => {
           id="goodAt"
           subtitle="What do you believe you're good at?"
           color="yellow"
+          infoTitle="What you're good at 🌟"
+          infoContent={InfoText.goodAt}
           list={lists.goodAt}
           listHandler={[handleAdd, handleEdits, handleDelete]}
           placeholder="I am good at ..."
@@ -116,6 +118,7 @@ const Step1 = () => {
           id="worldNeeds"
           subtitle="What are some big problems in the world?"
           color="blue"
+          infoContent={InfoText.worldNeeds}
           list={lists.worldNeeds}
           listHandler={[handleAdd, handleEdits, handleDelete]}
           placeholder="The world needs ..."
