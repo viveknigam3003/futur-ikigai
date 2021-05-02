@@ -1,11 +1,8 @@
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Editable, EditableInput, EditablePreview } from "@chakra-ui/editable";
-import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
-import { Textarea } from "@chakra-ui/textarea";
 import React, { useEffect, useState } from "react";
-import BoxHeader from "../../components/BoxHeader";
-import { MoreInfo } from "../../components/Info";
+import IdeaBox from "../../components/IdeaBox";
 import StepLayout from "../../components/StepLayout";
 import IdeaBoxes from "../../data/IdeaBox";
 import { COLOR_LIST, IDEAS_KEY } from "../../utils/constants";
@@ -38,47 +35,11 @@ const Idea = ({ id }) => {
     setIdea({ ...idea, idea: { ...idea.idea, [K]: V } });
   };
 
-  const IdeaBox = ({
-    title,
-    subtitle,
-    infoTitle,
-    infoContent,
-    placeholder,
-    onChange,
-  }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const [inputName, inputValue] = [
-      title.toLowerCase(),
-      idea.idea[title.toLowerCase()],
-    ];
-    return (
-      <Box p="2" m="4" flex="1 1 50%">
-        <BoxHeader
-          mb="2"
-          title={title}
-          subtitle={subtitle}
-          hasInfo
-          onClick={onOpen}
-          size={{ titleSize: "2xl", subtitleSize: "sm" }}
-        />
-        <MoreInfo
-          isOpen={isOpen}
-          onClose={onClose}
-          color="purple"
-          infoTitle={infoTitle}
-          infoContent={infoContent}
-        />
-        <Textarea
-          value={inputValue}
-          name={inputName}
-          onChange={onChange}
-          borderRadius="10px"
-          size="sm"
-          placeholder={placeholder}
-        />
-      </Box>
-    );
-  };
+  useEffect(() => {
+    const timeout = setTimeout(() => handleSubmit(), 3000);
+
+    return () => clearTimeout(timeout);
+  }, [idea]);
 
   return (
     <StepLayout
@@ -138,6 +99,8 @@ const Idea = ({ id }) => {
             infoTitle={item.infoTitle}
             infoContent={item.infoContent}
             placeholder={item.placeholder}
+            name={item.title.toLowerCase()}
+            value={idea.idea[item.title.toLowerCase()]}
             onChange={handleTextAreaChange}
           />
         ))}
