@@ -85,7 +85,7 @@ export default function Home() {
 
 const MenuItems = ({ openResetDialog }) => (
   <Fragment>
-    <MenuItem>Know More</MenuItem>
+    <MenuItem as="a" href="https://youtu.be/BAzs3amtEFA" target="_blank">Know More</MenuItem>
     <MenuItem color="red.400" onClick={openResetDialog}>
       Reset App
     </MenuItem>

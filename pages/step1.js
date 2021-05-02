@@ -134,7 +134,7 @@ const Step1 = () => {
 
 const MenuItems = ({ openClearListDialog }) => (
   <Fragment>
-    <MenuItem>Know More</MenuItem>
+    <MenuItem as="a" href="https://youtu.be/BAzs3amtEFA?t=8m51s" target="_blank">Know More</MenuItem>
     <MenuItem onClick={openClearListDialog}>Clear Lists</MenuItem>
   </Fragment>
 );
