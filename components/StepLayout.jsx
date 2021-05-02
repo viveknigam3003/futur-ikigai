@@ -5,43 +5,52 @@ import Footer from "./Footer";
 import Meta from "./Meta";
 import Navbar from "./Navbar";
 
-const StepLayout = ({ pageTitle, navTitle, navSubtitle, color, children, menuItems }) => {
+const StepLayout = ({
+  pageTitle,
+  navTitle,
+  navSubtitle,
+  color,
+  children,
+  menuItems,
+}) => {
   return (
-    <Box
-      minHeight="100vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Meta title={pageTitle} />
-      <Navbar menuItems={menuItems}>
-        <Box>
-          <Text
-            fontSize="l"
-            fontWeight="semibold"
-            color={useColorModeValue(`${color}.500`, `${color}.200`)}
-          >
-            {navTitle}
-          </Text>
-          <Text fontSize="sm" color="InactiveCaptionText">
-            {navSubtitle}
-          </Text>
-        </Box>
-      </Navbar>
+    <React.Fragment>
       <Box
-        p="5rem 0"
+        minHeight="100vh"
         display="flex"
-        flex="1"
-        width="100%"
         flexDirection="column"
+        justifyContent="center"
         alignItems="center"
-        aria-label="Layout Children Wrapper"
       >
-        {children}
+        <Meta title={pageTitle} />
+        <Navbar menuItems={menuItems}>
+          <Box>
+            <Text
+              fontSize="l"
+              fontWeight="semibold"
+              color={useColorModeValue(`${color}.500`, `${color}.200`)}
+            >
+              {navTitle}
+            </Text>
+            <Text fontSize="sm" color="InactiveCaptionText">
+              {navSubtitle}
+            </Text>
+          </Box>
+        </Navbar>
+        <Box
+          p="5rem 0"
+          display="flex"
+          flex="1"
+          width="100%"
+          flexDirection="column"
+          alignItems="center"
+          aria-label="Layout Children Wrapper"
+        >
+          {children}
+        </Box>
       </Box>
-      <Footer/>
-    </Box>
+      <Footer />
+    </React.Fragment>
   );
 };
 
