@@ -10,12 +10,33 @@ import StepLayout from "../../components/StepLayout";
 import IdeaBoxes from "../../data/IdeaBox";
 import { COLOR_LIST, IDEAS_KEY } from "../../utils/constants";
 
-const K = IDEAS_KEY;
 const Idea = ({ id }) => {
-  const initialState = JSON.parse(localStorage.getItem(K));
+  const initialState = JSON.parse(localStorage.getItem(IDEAS_KEY));
   const [idea, setIdea] = useState(initialState[id - 1]);
   const combo = idea.combo;
   const IdeaBoxData = IdeaBoxes(combo);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const [K, V] = [e.target.name, e.target.value];
+    setIdea({ ...idea, [K]: V });
+  };
+
+  const handleSubmit = async () => {
+    const ideas = JSON.parse(localStorage.getItem(IDEAS_KEY));
+    const preList = ideas.slice(0, id - 1);
+    const postList = ideas.slice(id);
+    localStorage.setItem(
+      IDEAS_KEY,
+      JSON.stringify([...preList, idea, ...postList])
+    );
+  };
+
+  const handleTextAreaChange = (e) => {
+    e.preventDefault();
+    const [K, V] = [e.target.name, e.target.value];
+    setIdea({ ...idea, idea: { ...idea.idea, [K]: V } });
+  };
 
   const IdeaBox = ({
     title,
@@ -23,8 +44,13 @@ const Idea = ({ id }) => {
     infoTitle,
     infoContent,
     placeholder,
+    onChange,
   }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [inputName, inputValue] = [
+      title.toLowerCase(),
+      idea.idea[title.toLowerCase()],
+    ];
     return (
       <Box p="2" m="4" flex="1 1 50%">
         <BoxHeader
@@ -42,7 +68,14 @@ const Idea = ({ id }) => {
           infoTitle={infoTitle}
           infoContent={infoContent}
         />
-        <Textarea borderRadius="10px" size="sm" placeholder={placeholder} />
+        <Textarea
+          value={inputValue}
+          name={inputName}
+          onChange={onChange}
+          borderRadius="10px"
+          size="sm"
+          placeholder={placeholder}
+        />
       </Box>
     );
   };
@@ -60,10 +93,11 @@ const Idea = ({ id }) => {
         fontSize="4xl"
         fontWeight="semibold"
         color={useColorModeValue("GrayText", "ActiveCaption")}
-        defaultValue={`Idea #${idea.id}`}
+        value={idea.name}
+        onSubmit={handleSubmit}
       >
         <EditablePreview />
-        <EditableInput />
+        <EditableInput name="name" onChange={handleChange} />
       </Editable>
       <Box
         display="flex"
@@ -104,6 +138,7 @@ const Idea = ({ id }) => {
             infoTitle={item.infoTitle}
             infoContent={item.infoContent}
             placeholder={item.placeholder}
+            onChange={handleTextAreaChange}
           />
         ))}
       </Box>
