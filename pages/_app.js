@@ -1,12 +1,11 @@
-import SEO from "../config/next-seo.config";
 import ProgressBar from "@badrap/bar-of-progress";
 import { ChakraProvider } from "@chakra-ui/react";
 import "@fontsource/inter";
 import "@fontsource/manrope";
 import { DefaultSeo } from "next-seo";
-import { Container } from "next/app";
 import Router from "next/router";
 import * as React from "react";
+import SEO from "../config/next-seo.config";
 import "../styles/globals.css";
 import theme from "../styles/theme";
 
@@ -23,12 +22,12 @@ Router.events.on("routeChangeError", progress.finish);
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Container>
+    <React.Fragment>
       <DefaultSeo {...SEO} />
       <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
-    </Container>
+    </React.Fragment>
   );
 }
 
