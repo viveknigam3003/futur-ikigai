@@ -38,8 +38,9 @@ You can also name the particular combination by clicking/tapping on "Untitiled" 
 
 ## Where is my data stored? 📦
 
-We do NOT collect any data from you, and all your data is stored on your particular device. But this means that your lists and ideas are not synced across your devices (laptop, mobile, and tablet).
+We do NOT collect any personal data from you, and all your data is stored on your particular device. But this means that your lists and ideas are not synced across your devices (laptop, mobile, and tablet).
 
+We just collect some anonymous analytics data to understand the performance of the application.
 ## Resetting the application ⚠
 
 If anytime you wish to start over, you can reset the whole application or several parts of the application.
