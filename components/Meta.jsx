@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 const Meta = () => {
   // const SEO = {
@@ -17,7 +17,7 @@ const Meta = () => {
   // };
 
   return (
-    <Helmet>
+    <Head>
       {/* //Primary Meta Tags */}
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -59,7 +59,7 @@ const Meta = () => {
       />
       <meta name="twitter:site" content="@_viveknigam_" />
       <meta name="twitter:creator" content="@_viveknigam_" />
-    </Helmet>
+    </Head>
   );
 };
 
