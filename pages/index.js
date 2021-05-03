@@ -2,6 +2,7 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
 import { MenuItem } from "@chakra-ui/menu";
 import { useToast } from "@chakra-ui/toast";
+import { NextSeo } from "next-seo";
 import { Fragment } from "react";
 import ActionModal from "../components/ActionModal";
 import Card from "../components/Card";
@@ -9,8 +10,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import KnowMoreCard from "../components/KnowMoreCard";
 import Navbar from "../components/Navbar";
-import SEO from "../components/SEO";
 import ShareTwitter from "../components/ShareTwitter";
+import SEO from "../config/next-seo.config";
 import styles from "../styles/Home.module.css";
 import { IDEAS_KEY, LIST_KEY } from "../utils/constants";
 
@@ -34,7 +35,7 @@ export default function Home() {
 
   return (
     <Fragment>
-      <SEO />
+      <NextSeo {...SEO} />
       <div className={styles.container}>
         <Navbar
           menuItems={<MenuItems openResetDialog={onOpen} />}
