@@ -34,11 +34,11 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Navbar
+        menuItems={<MenuItems openResetDialog={onOpen} />}
+        navButtons={<ShareTwitter />}
+      />
       <main className={styles.main}>
-        <Navbar
-          menuItems={<MenuItems openResetDialog={onOpen} />}
-          navButtons={<ShareTwitter />}
-        />
         <Meta title="Find your Ikigai" />
         <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
 
