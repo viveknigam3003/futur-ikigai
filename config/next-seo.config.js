@@ -11,7 +11,7 @@ export default {
     site_name: "Find your Ikigai",
     images: [
       {
-        url: "https://futur-ikigai.vercel.app/Thumbnail.png",
+        url: "/the-futur-ikigai.jpeg",
         alt: "Vivek Nigam & The Futur - Find your Ikigai",
       },
     ],
