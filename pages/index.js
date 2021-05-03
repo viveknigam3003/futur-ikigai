@@ -39,7 +39,7 @@ export default function Home() {
           navButtons={<ShareTwitter />}
         />
         <main className={styles.main}>
-          <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
+          <Header overline="The Futur" title="Ikigai" subtitle="生き甲斐" />
 
           <Text align="center" fontSize="xl" pt="2" color="InactiveCaptionText">
             Ikigai stands for "a reason for being"
