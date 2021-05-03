@@ -7,6 +7,7 @@ import ActionModal from "../components/ActionModal";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import KnowMoreCard from "../components/KnowMoreCard";
 import Meta from "../components/Meta";
 import Navbar from "../components/Navbar";
 import ShareTwitter from "../components/ShareTwitter";
@@ -70,6 +71,7 @@ export default function Home() {
             path="/step2"
           />
         </Box>
+        <KnowMoreCard />
         <ActionModal
           title="Are you sure you want to reset?"
           isOpen={isOpen}
