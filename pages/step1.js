@@ -1,15 +1,14 @@
-import { Button } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box } from "@chakra-ui/layout";
 import { MenuItem } from "@chakra-ui/menu";
 import { useToast } from "@chakra-ui/toast";
-import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
 import ActionModal from "../components/ActionModal";
 import ListContainer from "../components/List";
 import PageNav from "../components/PageNav";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";
+import analytics from "../plugins/mixpanel";
 import { LIST_KEY } from "../utils/constants";
 
 const K = LIST_KEY; //storage-key
@@ -21,6 +20,10 @@ const Step1 = () => {
   const [lists, setLists] = useState(JSON.parse(localStorage.getItem(K)));
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
+
+  useEffect(() => {
+    analytics.track("List Page Visit");
+  }, [])
 
   const success = (title) =>
     toast({
@@ -38,6 +41,7 @@ const Step1 = () => {
       setLists({ ...lists, [key]: [...lists[key], value] });
       e.target.value = "";
       success("Item Added");
+      analytics.track("Item Created");
     }
   };
 
@@ -58,6 +62,7 @@ const Step1 = () => {
     const postList = lists[key].slice(index + 1);
     setLists({ ...lists, [key]: [...preList, ...postList] });
     success("Item Deleted");
+    analytics.track("Item Deleted");
   };
 
   const handleReset = () => {
@@ -138,8 +143,12 @@ const Step1 = () => {
         <br /> Do you wish to continue?
       </ActionModal>
       <PageNav
-        prevProps={{link: "/", text: "Back to Home"}}
-        nextProps={{link: "/step2", color: "orange", text: "Next Step: Finding Ikigai"}}
+        prevProps={{ link: "/", text: "Back to Home" }}
+        nextProps={{
+          link: "/step2",
+          color: "orange",
+          text: "Next Step: Finding Ikigai",
+        }}
       />
     </StepLayout>
   );

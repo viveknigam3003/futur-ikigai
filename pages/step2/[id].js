@@ -11,6 +11,7 @@ import IdeaBoxes from "../../data/IdeaBox";
 import { COLOR_LIST, IDEAS_KEY } from "../../utils/constants";
 import { useRouter } from "next/router";
 import PageNav from "../../components/PageNav";
+import analytics from "../../plugins/mixpanel";
 
 const Idea = ({ id }) => {
   const ideas = JSON.parse(localStorage.getItem(IDEAS_KEY));
@@ -20,6 +21,10 @@ const Idea = ({ id }) => {
   const IdeaBoxData = IdeaBoxes(combo);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
+
+  useEffect(() => {
+    analytics.track("User Idea Page Visited");
+  }, [])
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -32,6 +37,7 @@ const Idea = ({ id }) => {
     const nextList = [...ideas];
     nextList.splice(index, 1, idea);
     localStorage.setItem(IDEAS_KEY, JSON.stringify(nextList));
+    analytics.track("Idea Edited");
   };
 
   const handleTextAreaChange = (e) => {

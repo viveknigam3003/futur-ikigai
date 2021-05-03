@@ -2,7 +2,7 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Text } from "@chakra-ui/layout";
 import { MenuItem } from "@chakra-ui/menu";
 import { useToast } from "@chakra-ui/toast";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import ActionModal from "../components/ActionModal";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
@@ -10,12 +10,17 @@ import Header from "../components/Header";
 import KnowMoreCard from "../components/KnowMoreCard";
 import Navbar from "../components/Navbar";
 import ShareTwitter from "../components/ShareTwitter";
+import analytics from "../plugins/mixpanel";
 import styles from "../styles/Home.module.css";
 import { IDEAS_KEY, LIST_KEY } from "../utils/constants";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
+
+  useEffect(() => {
+    analytics.track("Session Start");
+  }, []);
 
   const handleReset = () => {
     localStorage.removeItem(LIST_KEY);

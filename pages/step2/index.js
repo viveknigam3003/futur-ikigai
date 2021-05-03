@@ -10,6 +10,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import ActionModal from "../../components/ActionModal";
 import PageNav from "../../components/PageNav";
 import StepLayout from "../../components/StepLayout";
+import analytics from "../../plugins/mixpanel";
 import { generateCombo, getUniqueID } from "../../utils";
 import { IDEAS_KEY, LIST_KEY } from "../../utils/constants";
 
@@ -24,6 +25,10 @@ const Step2 = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
+  useEffect(() => {
+    analytics.track("Ideas Page Visit");
+  }, [])
+
   const handleClick = () => {
     const id = getUniqueID();
     const IdeaObject = {
@@ -33,6 +38,7 @@ const Step2 = () => {
       idea: { tangible: "", digital: "", service: "" },
     };
     setIdeas([...ideas, IdeaObject]);
+    analytics.track("Idea Created")
   };
 
   const handleReset = () => {
