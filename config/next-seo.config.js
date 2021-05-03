@@ -1,13 +1,13 @@
 export default {
   title: "Find your Ikigai (The Futur X VN)",
   description:
-    "Find your Ikigai with the Chris Do (The Futur) method. This is a helper tool for following along with the Ikigai workshop by The Futur on Youtube. Developed by Vivek Nigam (@_viveknigam_)",
+    "Find your Ikigai with the Chris Do (The Futur) method. A helper tool for Ikigai workshop by The Futur. Developed by Vivek Nigam (@_viveknigam_)",
   canonical: "https://futur-ikigai.vercel.app",
   openGraph: {
     url: "https://futur-ikigai.vercel.app/",
     title: "Find your Ikigai (The Futur X VN)",
     description:
-      "Find your Ikigai with the Chris Do (The Futur) method. This is a helper tool for following along with the Ikigai workshop by The Futur on Youtube. Developed by Vivek Nigam (@_viveknigam_)",
+      "Find your Ikigai with the Chris Do (The Futur) method. A helper tool for Ikigai workshop by The Futur. Developed by Vivek Nigam (@_viveknigam_)",
     site_name: "Find your Ikigai",
     images: [
       {
