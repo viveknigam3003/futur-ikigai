@@ -1,18 +1,7 @@
 import React from "react";
 import { NextSeo } from "next-seo";
 
-const SEO = ({
-  title,
-  type,
-  author,
-  image,
-  copyright,
-  favicon,
-  url,
-  description,
-  siteName,
-  twitter,
-}) => {
+const SEO = ({ title, url, description, siteName, twitter }) => {
   return (
     <NextSeo
       title={title}

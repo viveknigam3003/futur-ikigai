@@ -1,9 +1,8 @@
-import { Button } from "@chakra-ui/button";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Box, Text } from "@chakra-ui/layout";
+import { NextSeo } from "next-seo";
 import * as React from "react";
 import Footer from "./Footer";
-import Meta from "./Meta";
 import Navbar from "./Navbar";
 
 const StepLayout = ({
@@ -16,6 +15,7 @@ const StepLayout = ({
 }) => {
   return (
     <React.Fragment>
+      <NextSeo title={pageTitle} />
       <Box
         minHeight="100vh"
         display="flex"
@@ -23,7 +23,6 @@ const StepLayout = ({
         justifyContent="center"
         alignItems="center"
       >
-        <Meta title={pageTitle} />
         <Navbar menuItems={menuItems}>
           <Box>
             <Text
