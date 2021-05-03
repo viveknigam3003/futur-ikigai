@@ -118,6 +118,7 @@ const Step1 = () => {
           id="worldNeeds"
           subtitle="What are some big problems in the world?"
           color="blue"
+          infoTitle="What the world needs 🌎"
           infoContent={InfoText.worldNeeds}
           list={lists.worldNeeds}
           listHandler={[handleAdd, handleEdits, handleDelete]}
