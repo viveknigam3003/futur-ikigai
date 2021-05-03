@@ -9,6 +9,12 @@ export default {
     description:
       "Find your Ikigai with the Chris Do (The Futur) method. This is a helper tool for following along with the Ikigai workshop by The Futur on Youtube.",
     site_name: "Find your Ikigai",
+    images: [
+      {
+        url: "https://futur-ikigai.vercel.app/Thumbnail.png",
+        alt: "Vivek Nigam & The Futur - Find your Ikigai",
+      },
+    ],
   },
   twitter: {
     handle: "@_viveknigam_",
