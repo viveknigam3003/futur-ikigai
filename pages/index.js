@@ -8,8 +8,8 @@ import Card from "../components/Card";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import KnowMoreCard from "../components/KnowMoreCard";
-import Meta from "../components/Meta";
 import Navbar from "../components/Navbar";
+import SEO from "../components/SEO";
 import ShareTwitter from "../components/ShareTwitter";
 import styles from "../styles/Home.module.css";
 import { IDEAS_KEY, LIST_KEY } from "../utils/constants";
@@ -33,61 +33,63 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
-      <Meta title="Find your Ikigai" />
-      <Navbar
-        menuItems={<MenuItems openResetDialog={onOpen} />}
-        navButtons={<ShareTwitter />}
-      />
-      <main className={styles.main}>
-        <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
+    <Fragment>
+      <SEO />
+      <div className={styles.container}>
+        <Navbar
+          menuItems={<MenuItems openResetDialog={onOpen} />}
+          navButtons={<ShareTwitter />}
+        />
+        <main className={styles.main}>
+          <Header overline="The Futur" title="Ikigai" subtitle="生きがい" />
 
-        <Text align="center" fontSize="xl" pt="2" color="InactiveCaptionText">
-          Ikigai stands for "a reason for being"
-        </Text>
+          <Text align="center" fontSize="xl" pt="2" color="InactiveCaptionText">
+            Ikigai stands for "a reason for being"
+          </Text>
 
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexWrap="wrap"
-          maxWidth="64rem"
-          mt="3rem"
-        >
-          <Card
-            overline="Step 1"
-            title="Looking Inside"
-            body="Discovering what you love, what you're good at, and what the world needs."
-            color="blue.500"
-            backgroundColor="blue.50"
-            path="/step1"
-          />
-          <Card
-            overline="Step 2"
-            title="Finding Ikigai"
-            body="Crafting ideas and extracting ultimate creativity for finding your Ikigai"
-            color="orange.500"
-            backgroundColor="orange.50"
-            path="/step2"
-          />
-        </Box>
-        <KnowMoreCard />
-        <ActionModal
-          title="Are you sure you want to reset?"
-          isOpen={isOpen}
-          onClose={onClose}
-          onClick={handleReset}
-          buttonText="Confirm Reset"
-        >
-          Resetting the application will delete all its data on this device.
-          This action is irreversible.
-          <br />
-          <br /> Do you wish to continue?
-        </ActionModal>
-      </main>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexWrap="wrap"
+            maxWidth="64rem"
+            mt="3rem"
+          >
+            <Card
+              overline="Step 1"
+              title="Looking Inside"
+              body="Discovering what you love, what you're good at, and what the world needs."
+              color="blue.500"
+              backgroundColor="blue.50"
+              path="/step1"
+            />
+            <Card
+              overline="Step 2"
+              title="Finding Ikigai"
+              body="Crafting ideas and extracting ultimate creativity for finding your Ikigai"
+              color="orange.500"
+              backgroundColor="orange.50"
+              path="/step2"
+            />
+          </Box>
+          <KnowMoreCard />
+          <ActionModal
+            title="Are you sure you want to reset?"
+            isOpen={isOpen}
+            onClose={onClose}
+            onClick={handleReset}
+            buttonText="Confirm Reset"
+          >
+            Resetting the application will delete all its data on this device.
+            This action is irreversible.
+            <br />
+            <br /> Do you wish to continue?
+          </ActionModal>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Fragment>
   );
 }
 
