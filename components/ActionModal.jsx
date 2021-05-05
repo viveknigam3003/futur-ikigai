@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/modal";
 import React from "react";
 
-const ActionModal = ({ title, onClose, isOpen, onClick, buttonText, children }) => {
+const ActionModal = ({ title, onClose, isOpen, onClick, buttonText, color="red", children }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -18,7 +18,7 @@ const ActionModal = ({ title, onClose, isOpen, onClick, buttonText, children }) 
         <ModalBody>{children}</ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="red" mr={3} onClick={onClick}>
+          <Button colorScheme={color} mr={3} onClick={onClick}>
             {buttonText}
           </Button>
           <Button mr={3} onClick={onClose}>
