@@ -1,0 +1,26 @@
+const WorldNeeds = [
+  "Sustainablity",
+  "Access to High Quality Education",
+  "Health Care",
+  "Social Justice",
+  "Conservation",
+  "Better virtual connectivity",
+  "Trust and transparency",
+  "Stable sources of income",
+  "On-demand healthcare facilities",
+  "More opportunities to express",
+  "Destigmatizing Mental Health",
+  "Bring untold stories to light",
+  "Quick verifyable news sources",
+  "Better online classrooms",
+  "Better virtual communities",
+  "Destigmatizing Mental Health",
+  "Better public transportation",
+  "Lower taxes",
+  "Eco concious initiatives",
+  "Celebrate differences",
+  "Spiritualism",
+  "Empathy",
+];
+
+export default WorldNeeds;
