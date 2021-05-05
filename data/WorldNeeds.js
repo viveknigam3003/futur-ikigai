@@ -17,7 +17,7 @@ const WorldNeeds = [
   "Destigmatizing Mental Health",
   "Better public transportation",
   "Lower taxes",
-  "Eco concious initiatives",
+  "Eco conscious initiatives",
   "Celebrate differences",
   "Spiritualism",
   "Empathy",
