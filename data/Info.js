@@ -42,7 +42,7 @@ const InfoText = {
     },
     { type: "br" },
     { type: "li", body: "Think Big! (in context of the world)" },
-    { type: "li", body: "And thing small (in context of you neighbourhood." },
+    { type: "li", body: "And think small (in context of you neighbourhood." },
     {
       type: "p",
       body:
