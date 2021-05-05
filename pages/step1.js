@@ -9,6 +9,7 @@ import PageNav from "../components/PageNav";
 import StepLayout from "../components/StepLayout";
 import InfoText from "../data/Info";
 import analytics from "../plugins/mixpanel";
+import { generateWorldNeeds } from "../utils";
 import { LIST_KEY } from "../utils/constants";
 
 const K = LIST_KEY; //storage-key
@@ -19,11 +20,16 @@ const Step1 = () => {
 
   const [lists, setLists] = useState(JSON.parse(localStorage.getItem(K)));
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isActionModalOpen,
+    onOpen: actionModalOpen,
+    onClose: actionModalClose,
+  } = useDisclosure();
   const toast = useToast();
 
   useEffect(() => {
     analytics.track("List Page Visit");
-  }, [])
+  }, []);
 
   const success = (title) =>
     toast({
@@ -79,6 +85,18 @@ const Step1 = () => {
     onClose();
   };
 
+  const handleGenerate = () => {
+    setLists({ ...lists, worldNeeds: generateWorldNeeds() });
+    actionModalClose();
+    toast({
+      title: "Auto-Generated List!",
+      description: "You can tap on any item to edit",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+  };
+
   useEffect(() => localStorage.setItem(K, JSON.stringify(lists)), [lists]);
 
   return (
@@ -128,6 +146,12 @@ const Step1 = () => {
           list={lists.worldNeeds}
           listHandler={[handleAdd, handleEdits, handleDelete]}
           placeholder="The world needs ..."
+          action={{
+            label: "Auto-Generate List",
+            state: true,
+            onClick: () =>
+              lists.worldNeeds.length ? actionModalOpen() : handleGenerate(),
+          }}
         />
       </Box>
       <ActionModal
@@ -139,6 +163,19 @@ const Step1 = () => {
       >
         Clearing the lists will remove all the data for this page. This action
         is irreversible.
+        <br />
+        <br /> Do you wish to continue?
+      </ActionModal>
+      <ActionModal
+        title="Confirm Action"
+        isOpen={isActionModalOpen}
+        onClose={actionModalClose}
+        onClick={handleGenerate}
+        buttonText="Generate List"
+        color="green"
+      >
+        This action will clear your current list and auto-generate a new one.
+        You can click on any item to edit or delete it later.
         <br />
         <br /> Do you wish to continue?
       </ActionModal>

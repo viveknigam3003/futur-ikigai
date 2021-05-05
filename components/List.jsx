@@ -17,6 +17,7 @@ const ListContainer = ({
   infoContent,
   infoTitle,
   placeholder,
+  action = { label: "", state: false, onClick: () => {} },
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [handleAdd, handleEdits, handleDelete] = listHandler;
@@ -39,6 +40,7 @@ const ListContainer = ({
         subtitle={subtitle}
         color={color}
         hasInfo
+        action={action}
         onClick={onOpen}
       />
 
