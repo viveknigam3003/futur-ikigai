@@ -1,6 +1,8 @@
 import { Box, Text } from "@chakra-ui/layout";
 import React from "react";
+import { HiLightningBolt } from "react-icons/hi";
 import { InfoTooltip } from "./Info";
+import TooltipButton from "./TooltipButton";
 
 const BoxHeader = ({
   title,
@@ -9,6 +11,7 @@ const BoxHeader = ({
   color,
   hasInfo = false,
   onClick,
+  action = { state: false, onClick: () => {}, label: "" },
   ...rest
 }) => {
   const { titleSize, subtitleSize } = size;
@@ -20,6 +23,13 @@ const BoxHeader = ({
       <Text color={`${color}.500`} fontSize={subtitleSize}>
         {subtitle}
         {hasInfo && <InfoTooltip onClick={onClick} />}
+        {action.state && (
+          <TooltipButton
+            label={action.label}
+            icon={<HiLightningBolt />}
+            onClick={action.onClick}
+          />
+        )}
       </Text>
     </Box>
   );
