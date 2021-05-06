@@ -27,7 +27,7 @@ const Step2 = () => {
 
   useEffect(() => {
     analytics.track("Ideas Page Visit");
-  }, [])
+  }, []);
 
   const handleClick = () => {
     const id = getUniqueID();
@@ -38,7 +38,14 @@ const Step2 = () => {
       idea: { tangible: "", digital: "", service: "" },
     };
     setIdeas([...ideas, IdeaObject]);
-    analytics.track("Idea Created")
+    analytics.track("Idea Created");
+    toast({
+      title: "Combination Generated!",
+      description: "Click on 'Untitled' to start writing your ideas",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
   };
 
   const handleReset = () => {
@@ -132,7 +139,9 @@ const Step2 = () => {
         <br />
         <br /> Do you wish to continue?
       </ActionModal>
-      <PageNav prevProps={{ link: "/step1", color: "blue", text: "Back to Step 1" }} />
+      <PageNav
+        prevProps={{ link: "/step1", color: "blue", text: "Back to Step 1" }}
+      />
     </StepLayout>
   );
 };
