@@ -5,6 +5,6 @@ export const FooterLinks = [
   },
   {
     label: "Privacy Policy",
-    link: "",
+    link: "https://github.com/viveknigam3003/futur-ikigai#where-is-my-data-stored-",
   },
 ];
